@@ -1,6 +1,6 @@
 # Sources
 
-Status: **not yet fetched** (network access to these hosts was blocked in the build environment).
+Status: AISHE final reports 2019-20, 2020-21, 2021-22, 2023-24 downloaded manually on 2026-11-04 (see `raw/aishe/PROVENANCE.md`); 2022-23 Excel still missing. All other sources not yet fetched (the build environment's network blocked these hosts).
 Deep links are deliberately omitted until verified; use the portal home and search by the dataset name.
 
 | Dataset | Publisher / portal | Gives | Frequency | Typical lag | Caveats |
@@ -9,7 +9,7 @@ Deep links are deliberately omitted until verified; use the portal home and sear
 | ESIC payroll data | ESIC (esic.gov.in) | Net new insured employees by state | Monthly | ~1-2 months | Wage-ceiling limited |
 | PLFS | MoSPI (mospi.gov.in) | State employment, unemployment, LFPR, sector, wages; migration module | Quarterly/annual | 3-12 months | Survey estimates; limited district detail |
 | Annual Survey of Industries | MoSPI | Factory employment by state | Annual | 1-2 years | Manufacturing only |
-| AISHE | Ministry of Education (aishe.gov.in) | Enrolment and pass-outs by state, university, discipline | Annual | 2-3 years | Lagged; check definitions of "pass-out" |
+| AISHE (Table 33, state-wise out-turn) | Ministry of Education (aishe.gov.in/document-category/aishe-final-reports/) | Enrolment and pass-outs by state, university, discipline | Annual | 2-3 years | Lagged; check definitions of "pass-out" |
 | AICTE dashboard | AICTE | Technical-institution intake and placement | Annual | ~1 year | Self-reported placements |
 | NIRF | MoE (nirfindia.org) | Graduating numbers, placement, median salary (ranked institutes) | Annual | ~1 year | Ranked institutions only |
 | Udyam registrations | Ministry of MSME | Registered units and reported employment by state | Continuous | Low | Self-reported |
