@@ -1,0 +1,14 @@
+state: West Bengal
+state_code: WB            # confirm code used by each source
+start_year: 2018
+sources:
+  epfo: {filter: {state: "West Bengal"}}
+  esic: {filter: {state: "West Bengal"}}
+  plfs: {filter: {state: "West Bengal"}}
+  aishe: {filter: {state: "West Bengal"}, level: [UG, PG], note: "decide scope: all disciplines vs professional/technical"}
+  aicte: {filter: {state: "West Bengal"}}
+  nirf: {filter: {state: "West Bengal"}}
+peers: [Karnataka, Tamil Nadu, Maharashtra, Telangana]   # for later comparison
+open_questions:
+  - "Which graduate definition best matches 'professionals' in the source post (all UG/PG vs technical/management)?"
+  - "Does any WB policy document state a job or migration target?"
