@@ -1,11 +1,11 @@
 # Sources
 
-Status: AISHE final reports 2019-20 to 2023-24 (five years) downloaded manually on 2026-11-04 (see `raw/aishe/PROVENANCE.md`). All other sources not yet fetched (the build environment's network blocked these hosts).
+Status: AISHE final reports 2019-20 to 2023-24 (five years) downloaded manually on 2026-11-04 (see `raw/aishe/PROVENANCE.md`). EPFO payroll: 20 Jan 2025 release downloaded (see `raw/epfo/PROVENANCE.md`); newer releases still needed. All other sources not yet fetched (the build environment's network blocked these hosts).
 Deep links are deliberately omitted until verified; use the portal home and search by the dataset name.
 
 | Dataset | Publisher / portal | Gives | Frequency | Typical lag | Caveats |
 |---|---|---|---|---|---|
-| EPFO payroll data | EPFO (epfindia.gov.in), also via MoSPI | Net new members by state, age band, month | Monthly | ~1-2 months | Counts PF enrolments, not jobs; includes switchers |
+| EPFO payroll data | EPFO (https://www.epfo.gov.in/data-hub/), also via MoSPI | Net new members by state, age band, month | Monthly | ~1-2 months | Counts PF enrolments, not jobs; includes switchers |
 | ESIC payroll data | ESIC (esic.gov.in) | Net new insured employees by state | Monthly | ~1-2 months | Wage-ceiling limited |
 | PLFS | MoSPI (mospi.gov.in) | State employment, unemployment, LFPR, sector, wages; migration module | Quarterly/annual | 3-12 months | Survey estimates; limited district detail |
 | Annual Survey of Industries | MoSPI | Factory employment by state | Annual | 1-2 years | Manufacturing only |
