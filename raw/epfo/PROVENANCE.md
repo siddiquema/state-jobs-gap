@@ -11,3 +11,7 @@ Downloaded 2026-11-04 by repo owner; the file name was prefixed for clarity (ori
 - Releases are **cumulative**: each shows all past financial years plus the months of the current year, and past figures are revised in later releases ("provisional"). Use the newest release for each year, and keep older ones to measure revisions.
 - Net payroll = new EPF subscribers - exits + exited members who rejoined (EPFO definition). It is **not** "jobs created": it includes people who switch employers within the covered sector or newly come under EPFO coverage.
 - Known error in EPFO's file: page 1 shows 22-25 net payroll for 2019-20 as 1,771,707 (a repeat of 2018-19). Page 3 and the state tables give 2,196,926. The state tables sum to 2,196,926, so we use that.
+
+| EPFO payroll 2025-09-20 (ccb62712-September-2025).pdf | 20 Sep 2025 (24 pp) | FY2017-18 to FY2024-25 annual, plus Apr-25 to Jul-25 monthly. Same table layout as the Jan-2025 release |
+
+EPFO corrected the page-1 22-25 / 2019-20 figure in this release (now 2,196,926). Added 2026-11-04 (original upload name `ccb62712-September-2025.pdf`).
