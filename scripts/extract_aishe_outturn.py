@@ -13,11 +13,12 @@ ROOT = Path(__file__).resolve().parent.parent
 RAW = ROOT / "raw" / "aishe"
 OUT = ROOT / "data" / "aishe_outturn_by_state.csv"
 
-# year -> (file, sheet). Add 2022-23 once its Excel is available.
+# year -> (file, sheet)
 FILES = {
     "2019-20": ("AISHE Final Report 2019-20.xlsx", "33OutTurnState"),
     "2020-21": ("AISHE Final Report 2020-21.xlsx", "33OutTurnState"),
     "2021-22": ("AISHE Final Report 2021-22.xlsx", "33OutTurnState"),
+    "2022-23": ("AISHE Final Report 2022-23.xlsx", "33 Out Turn"),
     "2023-24": ("AISHE Final Report 2023-24 (1).xlsx", "33 Out Turn"),
 }
 LEVELS = ["Ph.D.", "M.Phil.", "Post Graduate", "Under Graduate", "PG Diploma",

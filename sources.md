@@ -1,6 +1,6 @@
 # Sources
 
-Status: AISHE final reports 2019-20, 2020-21, 2021-22, 2023-24 downloaded manually on 2026-11-04 (see `raw/aishe/PROVENANCE.md`); 2022-23 Excel still missing. All other sources not yet fetched (the build environment's network blocked these hosts).
+Status: AISHE final reports 2019-20 to 2023-24 (five years) downloaded manually on 2026-11-04 (see `raw/aishe/PROVENANCE.md`). All other sources not yet fetched (the build environment's network blocked these hosts).
 Deep links are deliberately omitted until verified; use the portal home and search by the dataset name.
 
 | Dataset | Publisher / portal | Gives | Frequency | Typical lag | Caveats |

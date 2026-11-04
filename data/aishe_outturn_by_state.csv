@@ -980,6 +980,330 @@ year,state,level,male,female,total
 2021-22,West Bengal,Certificate,2178,1470,3648
 2021-22,West Bengal,Integrated,1239,1127,2366
 2021-22,West Bengal,Grand Total,267343,296568,563911
+2022-23,A & N Islands,Ph.D.,0,0,0
+2022-23,A & N Islands,M.Phil.,0,0,0
+2022-23,A & N Islands,Post Graduate,0,0,0
+2022-23,A & N Islands,Under Graduate,128,137,265
+2022-23,A & N Islands,PG Diploma,0,0,0
+2022-23,A & N Islands,Diploma,14,46,60
+2022-23,A & N Islands,Certificate,0,0,0
+2022-23,A & N Islands,Integrated,12,12,24
+2022-23,A & N Islands,Grand Total,154,195,349
+2022-23,Andhra Pradesh,Ph.D.,482,508,990
+2022-23,Andhra Pradesh,M.Phil.,0,0,0
+2022-23,Andhra Pradesh,Post Graduate,28959,30252,59211
+2022-23,Andhra Pradesh,Under Graduate,160158,165419,325577
+2022-23,Andhra Pradesh,PG Diploma,249,109,358
+2022-23,Andhra Pradesh,Diploma,16087,14265,30352
+2022-23,Andhra Pradesh,Certificate,46,22,68
+2022-23,Andhra Pradesh,Integrated,1466,1146,2612
+2022-23,Andhra Pradesh,Grand Total,207447,211721,419168
+2022-23,Arunachal Pradesh,Ph.D.,76,51,127
+2022-23,Arunachal Pradesh,M.Phil.,0,0,0
+2022-23,Arunachal Pradesh,Post Graduate,1563,1080,2643
+2022-23,Arunachal Pradesh,Under Graduate,4984,4302,9286
+2022-23,Arunachal Pradesh,PG Diploma,45,4,49
+2022-23,Arunachal Pradesh,Diploma,475,517,992
+2022-23,Arunachal Pradesh,Certificate,134,66,200
+2022-23,Arunachal Pradesh,Integrated,212,112,324
+2022-23,Arunachal Pradesh,Grand Total,7489,6132,13621
+2022-23,Assam,Ph.D.,281,292,573
+2022-23,Assam,M.Phil.,10,26,36
+2022-23,Assam,Post Graduate,6864,10919,17783
+2022-23,Assam,Under Graduate,46857,56412,103269
+2022-23,Assam,PG Diploma,266,329,595
+2022-23,Assam,Diploma,4645,5387,10032
+2022-23,Assam,Certificate,3570,3968,7538
+2022-23,Assam,Integrated,458,523,981
+2022-23,Assam,Grand Total,62951,77856,140807
+2022-23,Bihar,Ph.D.,648,305,953
+2022-23,Bihar,M.Phil.,0,0,0
+2022-23,Bihar,Post Graduate,21886,19680,41566
+2022-23,Bihar,Under Graduate,258724,239283,498007
+2022-23,Bihar,PG Diploma,457,272,729
+2022-23,Bihar,Diploma,20379,20120,40499
+2022-23,Bihar,Certificate,1047,919,1966
+2022-23,Bihar,Integrated,674,406,1080
+2022-23,Bihar,Grand Total,303815,280985,584800
+2022-23,Chandigarh,Ph.D.,220,298,518
+2022-23,Chandigarh,M.Phil.,0,0,0
+2022-23,Chandigarh,Post Graduate,2328,4481,6809
+2022-23,Chandigarh,Under Graduate,7406,8482,15888
+2022-23,Chandigarh,PG Diploma,224,366,590
+2022-23,Chandigarh,Diploma,599,456,1055
+2022-23,Chandigarh,Certificate,113,126,239
+2022-23,Chandigarh,Integrated,197,206,403
+2022-23,Chandigarh,Grand Total,11087,14415,25502
+2022-23,Chhattisgarh,Ph.D.,112,150,262
+2022-23,Chhattisgarh,M.Phil.,3,7,10
+2022-23,Chhattisgarh,Post Graduate,29750,43282,73032
+2022-23,Chhattisgarh,Under Graduate,94793,110356,205149
+2022-23,Chhattisgarh,PG Diploma,5341,6487,11828
+2022-23,Chhattisgarh,Diploma,9520,8161,17681
+2022-23,Chhattisgarh,Certificate,150,257,407
+2022-23,Chhattisgarh,Integrated,360,344,704
+2022-23,Chhattisgarh,Grand Total,140029,169044,309073
+2022-23,Delhi,Ph.D.,1462,1226,2688
+2022-23,Delhi,M.Phil.,183,203,386
+2022-23,Delhi,Post Graduate,51323,75259,126582
+2022-23,Delhi,Under Graduate,143982,128417,272399
+2022-23,Delhi,PG Diploma,15607,22242,37849
+2022-23,Delhi,Diploma,6261,14800,21061
+2022-23,Delhi,Certificate,290,420,710
+2022-23,Delhi,Integrated,801,612,1413
+2022-23,Delhi,Grand Total,219909,243179,463088
+2022-23,Goa,Ph.D.,56,39,95
+2022-23,Goa,M.Phil.,5,0,5
+2022-23,Goa,Post Graduate,1067,1676,2743
+2022-23,Goa,Under Graduate,4872,5521,10393
+2022-23,Goa,PG Diploma,97,50,147
+2022-23,Goa,Diploma,1671,495,2166
+2022-23,Goa,Certificate,55,13,68
+2022-23,Goa,Integrated,338,212,550
+2022-23,Goa,Grand Total,8161,8006,16167
+2022-23,Gujarat,Ph.D.,766,573,1339
+2022-23,Gujarat,M.Phil.,19,15,34
+2022-23,Gujarat,Post Graduate,36118,45624,81742
+2022-23,Gujarat,Under Graduate,163294,141932,305226
+2022-23,Gujarat,PG Diploma,1948,2305,4253
+2022-23,Gujarat,Diploma,23226,16263,39489
+2022-23,Gujarat,Certificate,1884,1668,3552
+2022-23,Gujarat,Integrated,1563,1478,3041
+2022-23,Gujarat,Grand Total,228818,209858,438676
+2022-23,Haryana,Ph.D.,316,446,762
+2022-23,Haryana,M.Phil.,0,18,18
+2022-23,Haryana,Post Graduate,13434,27739,41173
+2022-23,Haryana,Under Graduate,60878,98815,159693
+2022-23,Haryana,PG Diploma,625,792,1417
+2022-23,Haryana,Diploma,14260,8516,22776
+2022-23,Haryana,Certificate,279,627,906
+2022-23,Haryana,Integrated,1574,1529,3103
+2022-23,Haryana,Grand Total,91366,138482,229848
+2022-23,Himachal Pradesh,Ph.D.,126,166,292
+2022-23,Himachal Pradesh,M.Phil.,0,0,0
+2022-23,Himachal Pradesh,Post Graduate,4502,6647,11149
+2022-23,Himachal Pradesh,Under Graduate,22244,33253,55497
+2022-23,Himachal Pradesh,PG Diploma,301,485,786
+2022-23,Himachal Pradesh,Diploma,2553,2512,5065
+2022-23,Himachal Pradesh,Certificate,56,32,88
+2022-23,Himachal Pradesh,Integrated,274,179,453
+2022-23,Himachal Pradesh,Grand Total,30056,43274,73330
+2022-23,Jammu and Kashmir,Ph.D.,342,365,707
+2022-23,Jammu and Kashmir,M.Phil.,0,0,0
+2022-23,Jammu and Kashmir,Post Graduate,4197,7679,11876
+2022-23,Jammu and Kashmir,Under Graduate,16737,24977,41714
+2022-23,Jammu and Kashmir,PG Diploma,73,71,144
+2022-23,Jammu and Kashmir,Diploma,2497,3332,5829
+2022-23,Jammu and Kashmir,Certificate,130,229,359
+2022-23,Jammu and Kashmir,Integrated,572,590,1162
+2022-23,Jammu and Kashmir,Grand Total,24548,37243,61791
+2022-23,Jharkhand,Ph.D.,317,213,530
+2022-23,Jharkhand,M.Phil.,5,32,37
+2022-23,Jharkhand,Post Graduate,14524,21144,35668
+2022-23,Jharkhand,Under Graduate,75003,79321,154324
+2022-23,Jharkhand,PG Diploma,532,251,783
+2022-23,Jharkhand,Diploma,11853,8340,20193
+2022-23,Jharkhand,Certificate,430,278,708
+2022-23,Jharkhand,Integrated,442,258,700
+2022-23,Jharkhand,Grand Total,103106,109837,212943
+2022-23,Karnataka,Ph.D.,821,600,1421
+2022-23,Karnataka,M.Phil.,24,92,116
+2022-23,Karnataka,Post Graduate,41535,57139,98674
+2022-23,Karnataka,Under Graduate,206469,228633,435102
+2022-23,Karnataka,PG Diploma,2111,1635,3746
+2022-23,Karnataka,Diploma,28994,25377,54371
+2022-23,Karnataka,Certificate,543,400,943
+2022-23,Karnataka,Integrated,834,789,1623
+2022-23,Karnataka,Grand Total,281331,314665,595996
+2022-23,Kerala,Ph.D.,355,633,988
+2022-23,Kerala,M.Phil.,3,9,12
+2022-23,Kerala,Post Graduate,16162,33676,49838
+2022-23,Kerala,Under Graduate,64708,114222,178930
+2022-23,Kerala,PG Diploma,335,747,1082
+2022-23,Kerala,Diploma,8703,12518,21221
+2022-23,Kerala,Certificate,1041,516,1557
+2022-23,Kerala,Integrated,594,967,1561
+2022-23,Kerala,Grand Total,91901,163288,255189
+2022-23,Ladakh,Ph.D.,6,0,6
+2022-23,Ladakh,M.Phil.,0,0,0
+2022-23,Ladakh,Post Graduate,49,140,189
+2022-23,Ladakh,Under Graduate,126,237,363
+2022-23,Ladakh,PG Diploma,0,0,0
+2022-23,Ladakh,Diploma,78,118,196
+2022-23,Ladakh,Certificate,0,0,0
+2022-23,Ladakh,Integrated,0,0,0
+2022-23,Ladakh,Grand Total,259,495,754
+2022-23,Lakshadweep,Ph.D.,0,0,0
+2022-23,Lakshadweep,M.Phil.,0,0,0
+2022-23,Lakshadweep,Post Graduate,0,0,0
+2022-23,Lakshadweep,Under Graduate,27,121,148
+2022-23,Lakshadweep,PG Diploma,0,0,0
+2022-23,Lakshadweep,Diploma,3,17,20
+2022-23,Lakshadweep,Certificate,0,0,0
+2022-23,Lakshadweep,Integrated,0,0,0
+2022-23,Lakshadweep,Grand Total,30,138,168
+2022-23,Madhya Pradesh,Ph.D.,763,783,1546
+2022-23,Madhya Pradesh,M.Phil.,0,8,8
+2022-23,Madhya Pradesh,Post Graduate,72700,91741,164441
+2022-23,Madhya Pradesh,Under Graduate,254313,244221,498534
+2022-23,Madhya Pradesh,PG Diploma,17568,17984,35552
+2022-23,Madhya Pradesh,Diploma,43000,28612,71612
+2022-23,Madhya Pradesh,Certificate,1354,672,2026
+2022-23,Madhya Pradesh,Integrated,2981,2942,5923
+2022-23,Madhya Pradesh,Grand Total,392679,386963,779642
+2022-23,Maharashtra,Ph.D.,1381,1016,2397
+2022-23,Maharashtra,M.Phil.,19,17,36
+2022-23,Maharashtra,Post Graduate,102292,105015,207307
+2022-23,Maharashtra,Under Graduate,462153,382979,845132
+2022-23,Maharashtra,PG Diploma,9458,7484,16942
+2022-23,Maharashtra,Diploma,69132,57270,126402
+2022-23,Maharashtra,Certificate,5747,3856,9603
+2022-23,Maharashtra,Integrated,2174,1700,3874
+2022-23,Maharashtra,Grand Total,652356,559337,1211693
+2022-23,Manipur,Ph.D.,111,70,181
+2022-23,Manipur,M.Phil.,0,6,6
+2022-23,Manipur,Post Graduate,1339,1885,3224
+2022-23,Manipur,Under Graduate,11578,12115,23693
+2022-23,Manipur,PG Diploma,324,363,687
+2022-23,Manipur,Diploma,452,914,1366
+2022-23,Manipur,Certificate,115,65,180
+2022-23,Manipur,Integrated,0,0,0
+2022-23,Manipur,Grand Total,13919,15418,29337
+2022-23,Meghalaya,Ph.D.,37,22,59
+2022-23,Meghalaya,M.Phil.,0,0,0
+2022-23,Meghalaya,Post Graduate,1638,2310,3948
+2022-23,Meghalaya,Under Graduate,6759,9417,16176
+2022-23,Meghalaya,PG Diploma,24,51,75
+2022-23,Meghalaya,Diploma,288,598,886
+2022-23,Meghalaya,Certificate,23,46,69
+2022-23,Meghalaya,Integrated,3,11,14
+2022-23,Meghalaya,Grand Total,8772,12455,21227
+2022-23,Mizoram,Ph.D.,65,35,100
+2022-23,Mizoram,M.Phil.,0,0,0
+2022-23,Mizoram,Post Graduate,470,672,1142
+2022-23,Mizoram,Under Graduate,2622,2561,5183
+2022-23,Mizoram,PG Diploma,0,0,0
+2022-23,Mizoram,Diploma,2149,2664,4813
+2022-23,Mizoram,Certificate,1,1,2
+2022-23,Mizoram,Integrated,10,5,15
+2022-23,Mizoram,Grand Total,5317,5938,11255
+2022-23,Nagaland,Ph.D.,68,62,130
+2022-23,Nagaland,M.Phil.,0,0,0
+2022-23,Nagaland,Post Graduate,923,1372,2295
+2022-23,Nagaland,Under Graduate,4458,5535,9993
+2022-23,Nagaland,PG Diploma,0,0,0
+2022-23,Nagaland,Diploma,265,497,762
+2022-23,Nagaland,Certificate,739,772,1511
+2022-23,Nagaland,Integrated,0,0,0
+2022-23,Nagaland,Grand Total,6453,8238,14691
+2022-23,Odisha,Ph.D.,306,153,459
+2022-23,Odisha,M.Phil.,2,17,19
+2022-23,Odisha,Post Graduate,20471,23308,43779
+2022-23,Odisha,Under Graduate,86957,89579,176536
+2022-23,Odisha,PG Diploma,671,398,1069
+2022-23,Odisha,Diploma,23135,12262,35397
+2022-23,Odisha,Certificate,201,371,572
+2022-23,Odisha,Integrated,1121,1049,2170
+2022-23,Odisha,Grand Total,132864,127137,260001
+2022-23,Puducherry,Ph.D.,13,10,23
+2022-23,Puducherry,M.Phil.,0,0,0
+2022-23,Puducherry,Post Graduate,2925,3831,6756
+2022-23,Puducherry,Under Graduate,5924,7743,13667
+2022-23,Puducherry,PG Diploma,12,6,18
+2022-23,Puducherry,Diploma,666,354,1020
+2022-23,Puducherry,Certificate,3,1,4
+2022-23,Puducherry,Integrated,16,128,144
+2022-23,Puducherry,Grand Total,9559,12073,21632
+2022-23,Punjab,Ph.D.,575,609,1184
+2022-23,Punjab,M.Phil.,2,9,11
+2022-23,Punjab,Post Graduate,15310,24082,39392
+2022-23,Punjab,Under Graduate,67843,79530,147373
+2022-23,Punjab,PG Diploma,1622,2159,3781
+2022-23,Punjab,Diploma,11506,13019,24525
+2022-23,Punjab,Certificate,324,516,840
+2022-23,Punjab,Integrated,1350,1858,3208
+2022-23,Punjab,Grand Total,98532,121782,220314
+2022-23,Rajasthan,Ph.D.,1100,1027,2127
+2022-23,Rajasthan,M.Phil.,0,10,10
+2022-23,Rajasthan,Post Graduate,41606,62011,103617
+2022-23,Rajasthan,Under Graduate,275005,286051,561056
+2022-23,Rajasthan,PG Diploma,3283,2188,5471
+2022-23,Rajasthan,Diploma,21823,13255,35078
+2022-23,Rajasthan,Certificate,545,852,1397
+2022-23,Rajasthan,Integrated,14353,15098,29451
+2022-23,Rajasthan,Grand Total,357715,380492,738207
+2022-23,Sikkim,Ph.D.,29,27,56
+2022-23,Sikkim,M.Phil.,3,2,5
+2022-23,Sikkim,Post Graduate,829,909,1738
+2022-23,Sikkim,Under Graduate,2752,2843,5595
+2022-23,Sikkim,PG Diploma,0,0,0
+2022-23,Sikkim,Diploma,261,266,527
+2022-23,Sikkim,Certificate,0,0,0
+2022-23,Sikkim,Integrated,16,39,55
+2022-23,Sikkim,Grand Total,3890,4086,7976
+2022-23,Tamil Nadu,Ph.D.,1657,1889,3546
+2022-23,Tamil Nadu,M.Phil.,481,2053,2534
+2022-23,Tamil Nadu,Post Graduate,63587,102591,166178
+2022-23,Tamil Nadu,Under Graduate,271690,346845,618535
+2022-23,Tamil Nadu,PG Diploma,1236,1238,2474
+2022-23,Tamil Nadu,Diploma,40715,13292,54007
+2022-23,Tamil Nadu,Certificate,1082,2970,4052
+2022-23,Tamil Nadu,Integrated,1543,2034,3577
+2022-23,Tamil Nadu,Grand Total,381991,472912,854903
+2022-23,Telangana,Ph.D.,250,175,425
+2022-23,Telangana,M.Phil.,8,18,26
+2022-23,Telangana,Post Graduate,27590,37163,64753
+2022-23,Telangana,Under Graduate,111119,134634,245753
+2022-23,Telangana,PG Diploma,861,904,1765
+2022-23,Telangana,Diploma,11080,9815,20895
+2022-23,Telangana,Certificate,1450,296,1746
+2022-23,Telangana,Integrated,676,531,1207
+2022-23,Telangana,Grand Total,153034,183536,336570
+2022-23,D & N Haveli and Daman & Diu,Ph.D.,0,0,0
+2022-23,D & N Haveli and Daman & Diu,M.Phil.,0,0,0
+2022-23,D & N Haveli and Daman & Diu,Post Graduate,112,181,293
+2022-23,D & N Haveli and Daman & Diu,Under Graduate,883,1200,2083
+2022-23,D & N Haveli and Daman & Diu,PG Diploma,1,1,2
+2022-23,D & N Haveli and Daman & Diu,Diploma,239,53,292
+2022-23,D & N Haveli and Daman & Diu,Certificate,0,0,0
+2022-23,D & N Haveli and Daman & Diu,Integrated,3,1,4
+2022-23,D & N Haveli and Daman & Diu,Grand Total,1238,1436,2674
+2022-23,Tripura,Ph.D.,59,32,91
+2022-23,Tripura,M.Phil.,1,4,5
+2022-23,Tripura,Post Graduate,956,1105,2061
+2022-23,Tripura,Under Graduate,9658,9955,19613
+2022-23,Tripura,PG Diploma,1,7,8
+2022-23,Tripura,Diploma,774,781,1555
+2022-23,Tripura,Certificate,16,17,33
+2022-23,Tripura,Integrated,172,124,296
+2022-23,Tripura,Grand Total,11637,12025,23662
+2022-23,Uttar Pradesh,Ph.D.,2259,1662,3921
+2022-23,Uttar Pradesh,M.Phil.,10,53,63
+2022-23,Uttar Pradesh,Post Graduate,133990,164132,298122
+2022-23,Uttar Pradesh,Under Graduate,714052,726729,1440781
+2022-23,Uttar Pradesh,PG Diploma,6772,5162,11934
+2022-23,Uttar Pradesh,Diploma,65740,34501,100241
+2022-23,Uttar Pradesh,Certificate,3195,3053,6248
+2022-23,Uttar Pradesh,Integrated,5735,3785,9520
+2022-23,Uttar Pradesh,Grand Total,931753,939077,1870830
+2022-23,Uttarakhand,Ph.D.,522,320,842
+2022-23,Uttarakhand,M.Phil.,0,0,0
+2022-23,Uttarakhand,Post Graduate,14191,19339,33530
+2022-23,Uttarakhand,Under Graduate,41842,47271,89113
+2022-23,Uttarakhand,PG Diploma,176,181,357
+2022-23,Uttarakhand,Diploma,6449,2419,8868
+2022-23,Uttarakhand,Certificate,153,57,210
+2022-23,Uttarakhand,Integrated,434,225,659
+2022-23,Uttarakhand,Grand Total,63767,69812,133579
+2022-23,West Bengal,Ph.D.,1232,813,2045
+2022-23,West Bengal,M.Phil.,45,27,72
+2022-23,West Bengal,Post Graduate,28050,44603,72653
+2022-23,West Bengal,Under Graduate,202997,221348,424345
+2022-23,West Bengal,PG Diploma,749,336,1085
+2022-23,West Bengal,Diploma,34520,22987,57507
+2022-23,West Bengal,Certificate,3075,2032,5107
+2022-23,West Bengal,Integrated,2088,1206,3294
+2022-23,West Bengal,Grand Total,272756,293352,566108
 2023-24,A & N Islands,Ph.D.,0,0,0
 2023-24,A & N Islands,M.Phil.,0,0,0
 2023-24,A & N Islands,Post Graduate,0,0,0
