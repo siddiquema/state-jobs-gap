@@ -1,6 +1,6 @@
 # Sources
 
-Status: AISHE final reports 2019-20 to 2023-24 (five years) downloaded manually on 2026-11-04 (see `raw/aishe/PROVENANCE.md`). EPFO payroll: 20 Jan 2025 release downloaded (see `raw/epfo/PROVENANCE.md`); newer releases still needed. All other sources not yet fetched (the build environment's network blocked these hosts).
+Status: AISHE final reports 2019-20 to 2023-24 (five years) downloaded manually on 2026-11-04 (see `raw/aishe/PROVENANCE.md`). EPFO payroll: 20 Jan 2025 release downloaded (see `raw/epfo/PROVENANCE.md`); newer releases still needed. PLFS 2025 district snapshot downloaded (see `raw/plfs/PROVENANCE.md`; the PLFS 2025 Annual Report and Million-plus Cities report are still needed). All other sources not yet fetched (the build environment's network blocked these hosts).
 Deep links are deliberately omitted until verified; use the portal home and search by the dataset name.
 
 | Dataset | Publisher / portal | Gives | Frequency | Typical lag | Caveats |
