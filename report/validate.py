@@ -30,7 +30,7 @@ def pdf_text(path, mode):
 # ---------- 1. AISHE: undergraduate pass-outs and population, read by cell position from the raw workbooks
 FILES = {"2019-20": "AISHE Final Report 2019-20.xlsx", "2020-21": "AISHE Final Report 2020-21.xlsx", "2021-22": "AISHE Final Report 2021-22.xlsx",
          "2022-23": "AISHE Final Report 2022-23.xlsx", "2023-24": "AISHE Final Report 2023-24 (1).xlsx"}
-raw_ug = {}
+raw_ug, raw_pg = {}, {}
 for y, f in FILES.items():
     wb = openpyxl.load_workbook(ROOT / "raw/aishe" / f, read_only=True, data_only=True)
     sh = next(n for n in wb.sheetnames if n.replace(" ", "").lower().startswith("33") and "cat" not in n.lower() and "a" != n[-1])
@@ -38,6 +38,7 @@ for y, f in FILES.items():
         if any(isinstance(c, str) and c.strip() == "West Bengal" for c in r):
             nums = [c for c in r if isinstance(c, (int, float))]
             raw_ug[y] = (nums[10], nums[11], nums[12])           # UG male, female, total (after Ph.D., M.Phil., PG triples)
+            raw_pg[y] = nums[9]                                 # PG total
             check("AISHE", f"{y}: level totals add up to the grand total", nums[3] + nums[6] + nums[9] + nums[12] + nums[15] + nums[18] + nums[21] + nums[24], nums[-1])
             break
 for y in FILES:
@@ -52,6 +53,9 @@ for y in ("2022-23", "2023-24"):
         if len(c) >= 5 and isinstance(c[1], str):
             raw_pop[(y, c[1].strip().replace("Tamilnadu", "Tamil Nadu"))] = c[4]
 check("AISHE", "West Bengal population aged 18-23, 2023-24", raw_pop[("2023-24", "West Bengal")], 9992600)
+
+for y in FILES:
+    check("AISHE", f"West Bengal PG pass-outs {y} (raw workbook vs cleaned table)", raw_pg[y], F["wb_pg"][y])
 
 # ---------- 2. EPFO: West Bengal net payroll by age band, from the two raw payroll PDFs
 def epfo_wb(pdf):
@@ -131,6 +135,27 @@ for s_est, s in [("WEST BENGAL", "West Bengal")] + [(h.upper(), h) for h in HUB]
     check("PLFS", f"{s}: share of non-farm workers in limited companies (Table 35, column 4)", alias(t35, s)[3], float(R["company_share_nonagri"]))
     check("PLFS", f"{s}: regular non-farm jobs with no social security (Table 36, persons)", alias(t36, s)[10], float(R["regular_no_ssb_share"]))
 RAW_INDIA = {"regular": t19["all India"][3], "company": t35["all India"][3], "nossb": t36["all India"][10]}
+
+# bridge from pass-outs to employed graduates, rebuilt from raw inputs only
+ugr = sum(raw_ug[y][2] for y in FILES); pgr = sum(raw_pg[y] for y in FILES)
+lfs_r = sum(raw_ug[y][0] * raw_lf_m["West Bengal"][6] / 100 + raw_ug[y][1] * raw_lf_f["West Bengal"][6] / 100 for y in FILES)
+ur_r = raw_ur["West Bengal"][6] / 100
+inlf_r = (ugr - pgr) * lfs_r / ugr
+formal_1825 = sum(sep[(y, "18-21")] + sep[(y, "22-25")] for y in facts.YEARS); formal_2225 = sum(sep[(y, "22-25")] for y in facts.YEARS)
+B = F["bridge"]
+check("bridge", "PG pass-outs, five years (proxy for continuing to a master's)", pgr, B["pg"])
+check("bridge", "PG pass-outs are about 19% of UG pass-outs", round(pgr / ugr * 100), 19)
+check("bridge", "graduates outside the labour force after PG deduction (thousands)", round((ugr - pgr - inlf_r) / 1000), round(B["out_lf"] / 1000))
+check("bridge", "unemployed graduates (thousands)", round(inlf_r * ur_r / 1000), round(B["unemployed"] / 1000))
+emp_r = inlf_r * (1 - ur_r); emp0_r = lfs_r * (1 - ur_r)
+check("bridge", "employed graduates, PG deducted (thousands)", round(emp_r / 1000), round(B["employed"] / 1000))
+for nm, got, key in (("PG deducted, ages 18-25", emp_r - formal_1825, "res_pg_1825"), ("PG deducted, ages 22-25", emp_r - formal_2225, "res_pg_2225"),
+                     ("no PG deduction, ages 18-25", emp0_r - formal_1825, "res_nopg_1825"), ("no PG deduction, ages 22-25", emp0_r - formal_2225, "res_nopg_2225")):
+    check("bridge", f"remainder after adjustments, {nm} (thousands)", round(got / 1000), round(B[key] / 1000))
+check("bridge", "the four remainders range from about -0.05 to +0.54 million", (round(min(B[k] for k in ("res_pg_1825", "res_pg_2225", "res_nopg_1825", "res_nopg_2225")) / 1e6, 2), round(max(B[k] for k in ("res_pg_1825", "res_pg_2225", "res_nopg_1825", "res_nopg_2225")) / 1e6, 2)), (-0.05, 0.54))
+import math
+for nn, want in ((15000, 0.98), (1250, 3.4)):
+    check("design", f"margin of error for {nn} respondents (95%, design effect 1.5), points", round(1.96 * math.sqrt(1.5 * 0.25 / nn) * 100, 2 if nn == 15000 else 1), want)
 
 # ---------- 4. City report and district snapshot
 city = pdf_text(next((ROOT / "raw/plfs").glob("*Million_plus_city_F.pdf")), "-layout").splitlines()
