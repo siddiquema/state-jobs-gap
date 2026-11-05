@@ -65,7 +65,7 @@ West Bengal's formal entry per young person is about a fifth of the peers', a mu
 ## 4. What graduates actually face in West Bengal (PLFS 2025, age 15+)
 - Unemployment is **2.8%** overall but **11.4% for graduates** (India: 11.2%), 6.3% for postgraduates (India: 10.0%), 11.6% for diploma holders (India: 6.9%). West Bengal matches India for graduates, so this is a national pattern. The report publishes no standard error for this table; a rough estimate from sample size gives about 2 points either side, so the postgraduate difference with India is suggestive only.
 - Youth NEET (not working, not studying, 15-29): **29.9%** statewide; Kolkata 21.9% (women 44.2%); districts other than Kolkata range from 25.6% to 38.2%.
-- Kolkata's unemployment is low (1.9%, high sampling error) but regular wage/salary averages Rs 19,093 a month against Rs 28,808 for all million-plus cities: people work, but at lower pay. Kolkata's regular wage is the 5th lowest of 46 million-plus cities (Howrah 16th lowest). Why is an inference: cost of living and industry mix are alternative explanations to scarce good jobs.
+- Kolkata's unemployment is low (1.9%, relative standard error about 29%, so approximate) but regular wage/salary averages Rs 19,093 a month against Rs 28,808 for all million-plus cities: people work, but at lower pay. Kolkata's regular wage is the 5th lowest of 46 million-plus cities (Howrah 16th lowest). Why is an inference: cost of living and industry mix are alternative explanations to scarce good jobs.
 
 ## 5. What this does not show
 - **Not a migration number.** The gap also contains graduates who study further, work informally or for government (outside EPFO), start businesses, are unemployed (graduate UR 11.4%), or are outside the labour force.

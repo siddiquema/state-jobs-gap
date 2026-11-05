@@ -1,0 +1,287 @@
+"""Validate every figure behind the report against the raw source files, by a second, independent route.
+
+Route 1 (report/facts.py): cleaned CSVs in data/, produced by the repository's extraction scripts.
+Route 2 (this file): fresh reads of the raw files in raw/ (xlsx cells by position; PDF text via `pdftotext -raw`/-layout with
+different parsing), plus checks on every derived claim (sums, ratios, ranges, ranks, correlations).
+Writes report/validation_log.csv and exits non-zero if anything fails. Run from the repo root: python3 -I report/validate.py
+"""
+import csv, glob, re, subprocess, sys
+from pathlib import Path
+import openpyxl
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import facts
+
+ROOT = Path(__file__).resolve().parent.parent
+F = facts.build()
+LOG = []
+
+
+def check(group, claim, got, expected, tol=0.0):
+    ok = abs(got - expected) <= tol if isinstance(got, (int, float)) and isinstance(expected, (int, float)) else got == expected
+    LOG.append((group, claim, got, expected, "PASS" if ok else "FAIL"))
+    return ok
+
+
+def pdf_text(path, mode):
+    return subprocess.run(["pdftotext", mode, str(path), "-"], capture_output=True, text=True, check=True).stdout
+
+
+# ---------- 1. AISHE: undergraduate pass-outs and population, read by cell position from the raw workbooks
+FILES = {"2019-20": "AISHE Final Report 2019-20.xlsx", "2020-21": "AISHE Final Report 2020-21.xlsx", "2021-22": "AISHE Final Report 2021-22.xlsx",
+         "2022-23": "AISHE Final Report 2022-23.xlsx", "2023-24": "AISHE Final Report 2023-24 (1).xlsx"}
+raw_ug = {}
+for y, f in FILES.items():
+    wb = openpyxl.load_workbook(ROOT / "raw/aishe" / f, read_only=True, data_only=True)
+    sh = next(n for n in wb.sheetnames if n.replace(" ", "").lower().startswith("33") and "cat" not in n.lower() and "a" != n[-1])
+    for r in wb[sh].iter_rows(values_only=True):
+        if any(isinstance(c, str) and c.strip() == "West Bengal" for c in r):
+            nums = [c for c in r if isinstance(c, (int, float))]
+            raw_ug[y] = (nums[10], nums[11], nums[12])           # UG male, female, total (after Ph.D., M.Phil., PG triples)
+            check("AISHE", f"{y}: level totals add up to the grand total", nums[3] + nums[6] + nums[9] + nums[12] + nums[15] + nums[18] + nums[21] + nums[24], nums[-1])
+            break
+for y in FILES:
+    check("AISHE", f"West Bengal UG pass-outs {y} (raw workbook vs cleaned table)", raw_ug[y][2], F["wb_ug"][y][2])
+    check("AISHE", f"West Bengal UG male + female {y} equal total", raw_ug[y][0] + raw_ug[y][1], raw_ug[y][2])
+raw_pop = {}
+for y in ("2022-23", "2023-24"):
+    wb = openpyxl.load_workbook(ROOT / "raw/aishe" / FILES[y], read_only=True, data_only=True)
+    sh = next(n for n in wb.sheetnames if n.replace(" ", "").startswith("38"))
+    for r in wb[sh].iter_rows(values_only=True):
+        c = [x for x in r if x is not None]
+        if len(c) >= 5 and isinstance(c[1], str):
+            raw_pop[(y, c[1].strip().replace("Tamilnadu", "Tamil Nadu"))] = c[4]
+check("AISHE", "West Bengal population aged 18-23, 2023-24", raw_pop[("2023-24", "West Bengal")], 9992600)
+
+# ---------- 2. EPFO: West Bengal net payroll by age band, from the two raw payroll PDFs
+def epfo_wb(pdf):
+    out, bucket, periods = {}, None, None
+    in_state = False
+    for line in pdf_text(pdf, "-layout").splitlines():
+        if "STATEWISE NEW PAYROLL DATA" in line:
+            in_state = True
+        elif "INDUSTRY WISE PAYROLL DATA" in line:
+            in_state = False
+        if not in_state:
+            continue
+        m = re.match(r"\s*Age Bucket:\s*(.+?)\s*$", line)
+        if m:
+            bucket = m.group(1)
+        elif line.startswith("State") and "2017-18" in line:
+            periods = line.split()[1:]
+        elif line.startswith("WEST BENGAL") and periods:
+            vals = [int(v) for v in line.split()[2:]]
+            assert len(vals) == len(periods), (len(vals), len(periods))
+            out.update({(p, bucket): v for p, v in zip(periods, vals)})
+    return out
+
+jan = epfo_wb(next((ROOT / "raw/epfo").glob("*January-2025*.pdf")))
+sep = epfo_wb(next((ROOT / "raw/epfo").glob("*September-2025*.pdf")))
+BK = facts.BUCKETS
+for fy in facts.FYS:
+    src = sep
+    for b in BK:
+        check("EPFO", f"West Bengal {fy}, age band {b} (raw PDF vs cleaned table)", src[(fy, b)], F["ep"][(fy, "WEST BENGAL", b)])
+for fy in facts.FYS[:-1]:
+    same = all(jan[(fy, b)] == sep[(fy, b)] for b in BK)
+    check("EPFO", f"Jan-2025 and Sep-2025 releases agree for {fy} (all six age bands)", same, True)
+for m in F["wb_month"]:
+    src = jan if m.endswith("24") else sep
+    raw_m = sum(src[(m, b)] for b in BK)
+    check("EPFO", f"West Bengal net payroll {m} (all ages)", raw_m, F["wb_month"][m])
+# national identity: net payroll = new subscribers - exits + rejoiners (first Total line of the Sep release)
+t = pdf_text(next((ROOT / "raw/epfo").glob("*September-2025*.pdf")), "-layout")
+tot = re.search(r"^\s*Total\s+(\d+)\s+(\d+)\s+(\d+)\s+(\d+)\s*$", t, re.M)
+a_, b_, c_, d_ = map(int, tot.groups())
+check("EPFO", "definition: net payroll = new subscribers - exits + rejoiners (national, 2017-18)", a_ - b_ + c_, d_)
+nat = {}
+for m in re.finditer(r"^\s*(Apr|May|Jun|Jul|Aug|Sep|Oct|Nov)-2024\s+([\d\s]+?)\s*$", pdf_text(next((ROOT / "raw/epfo").glob("*January-2025*.pdf")), "-layout"), re.M):
+    nums = m.group(2).split()
+    nat[m.group(1)] = int(nums[6])                           # total column
+check("EPFO", "October 2024 is the lowest month nationally, Apr-Nov 2024", min(nat, key=nat.get), "Oct")
+
+# ---------- 3. PLFS annual report: tables read from `pdftotext -raw`, last page of each table = rural+urban (persons for 22-24, 19, 35)
+ann = pdf_text(next((ROOT / "raw/plfs").glob("*PLFS_2025_F_REV*.pdf")), "-raw").split("\f")
+NUM = r"-?[\d,]+(?:\.\d+)?"
+def plfs_table(tno, ncols, which=-1):
+    hits = [p for p in ann if re.search(rf"Table \({tno}\):", p) and re.search(r"^West Bengal ", p, re.M)]
+    assert len(hits) in (3, 9), (tno, len(hits))
+    out = {}
+    for l in hits[which].splitlines():
+        m = re.match(rf"^([A-Za-z&.\- ]+?) ((?:{NUM} ){{{ncols-1}}}{NUM})$", l.strip())
+        if m:
+            out[m.group(1)] = [float(v.replace(",", "")) for v in m.group(2).split()]
+    return out
+EDU = ["not literate", "literate & up to primary", "middle", "secondary", "higher secondary", "diploma/certificate course", "graduate", "post graduate & above", "secondary & above", "all"]
+raw_ur = plfs_table(24, 10); raw_lf_m = plfs_table(22, 10, -3); raw_lf_f = plfs_table(22, 10, -2); raw_lf_p = plfs_table(22, 10); raw_wpr = plfs_table(23, 10)
+for e in EDU:
+    i = EDU.index(e)
+    for st, key in (("West Bengal", "West Bengal"), ("all India", "all India")):
+        check("PLFS", f"unemployment, {key}, {e}", raw_ur[st][i], F["edu"][("UR", "rural+urban", "persons", key, e)])
+        check("PLFS", f"labour force participation, {key}, {e}", raw_lf_p[st][i], F["edu"][("LFPR", "rural+urban", "persons", key, e)])
+for st in ("West Bengal", "all India"):
+    check("PLFS", f"graduate men in labour force, {st}", raw_lf_m[st][6], F["edu"][("LFPR", "rural+urban", "male", st, "graduate")])
+    check("PLFS", f"graduate women in labour force, {st}", raw_lf_f[st][6], F["edu"][("LFPR", "rural+urban", "female", st, "graduate")])
+t19, t35, t36 = plfs_table(19, 6), plfs_table(35, 10), plfs_table(36, 12)
+HUB = ["Tamil Nadu", "Telangana", "Karnataka", "Maharashtra"]
+alias = lambda d, s: d.get(s) or d.get({"Kerala": "Keralam"}.get(s, s))
+for s_est, s in [("WEST BENGAL", "West Bengal")] + [(h.upper(), h) for h in HUB] + [("ORISSA", "Odisha"), ("JHARKHAND", "Jharkhand"), ("BIHAR", "Bihar"), ("ASSAM", "Assam"), ("ANDHRA PRADESH", "Andhra Pradesh"), ("KERALA", "Kerala")]:
+    R = F["robust"][s]
+    check("PLFS", f"{s}: regular wage/salaried share of workers (Table 19, column 4)", alias(t19, s)[3], float(R["regular_share_of_workers"]))
+    check("PLFS", f"{s}: share of non-farm workers in limited companies (Table 35, column 4)", alias(t35, s)[3], float(R["company_share_nonagri"]))
+    check("PLFS", f"{s}: regular non-farm jobs with no social security (Table 36, persons)", alias(t36, s)[10], float(R["regular_no_ssb_share"]))
+RAW_INDIA = {"regular": t19["all India"][3], "company": t35["all India"][3], "nossb": t36["all India"][10]}
+
+# ---------- 4. City report and district snapshot
+city = pdf_text(next((ROOT / "raw/plfs").glob("*Million_plus_city_F.pdf")), "-layout").splitlines()
+def city_rows(prefix):
+    start = next(i for i, l in enumerate(city) if l.startswith(prefix))
+    end = next(i for i, l in enumerate(city) if i > start and re.match(r"Table \d+(\.\d+)?:", l))
+    out = {}
+    for l in city[start:end]:
+        m = re.match(r"^\s*(.+?\S)\s{2,}([\d,]+)\s+([\d,]+)\s+([\d,]+)\s*$", l)
+        if m and "million" not in m.group(1) and "India" not in m.group(1):
+            out[m.group(1)] = int(m.group(4).replace(",", ""))
+    return out
+wages = city_rows("Table 8:")
+ranked = sorted(wages, key=wages.get)
+check("PLFS cities", "number of million-plus cities with a regular wage estimate", len(wages), 46)
+check("PLFS cities", "Kolkata average regular wage (Rs a month)", wages["Kolkata MC"], 19093)
+check("PLFS cities", "Kolkata rank among cities from the lowest wage (5 = fifth lowest)", ranked.index("Kolkata MC") + 1, 5)
+check("PLFS cities", "Howrah rank from the lowest wage", ranked.index("Howrah MC") + 1, 16)
+check("PLFS cities", "Greater Mumbai average regular wage", wages["Greater Mumbai MC"], 36267)
+check("PLFS cities", "Chennai average regular wage", wages["Chennai MC"], 28955)
+snap = pdf_text(next((ROOT / "raw/plfs").glob("*Selected Districts*.pdf")), "-layout").splitlines()
+i0 = next(i for i, l in enumerate(snap) if l.strip() == "West Bengal")
+raw_d = {}
+for l in snap[i0:i0 + 45]:
+    m = re.match(r"^\s*(?:\d+\.\s+)?([A-Za-z\- ]+?)\s{2,}([\d.]+)\s+([\d.]+)\s+([\d.]+)\s+([\d.]+)\s*$", l)
+    if m:
+        raw_d[m.group(1).strip()] = tuple(float(x) for x in m.groups()[1:])
+for r in F["districts"]:
+    check("PLFS districts", f"{r['name']}: unemployment and NEET 15-29", (raw_d[r["name"]][2], raw_d[r["name"]][3]), (float(r["ur_15plus"]), float(r["neet_15_29"])))
+
+ur_block = city[next(i for i, l in enumerate(city) if l.startswith("Table 11:")):]
+kol_ur = re.search(r"^Kolkata MC\s+(\S+)\s+(\S+)\s+(\S+)\s*$", "\n".join(ur_block), re.M).groups()
+how_ur = re.search(r"^Howrah MC\s+(\S+)\s+(\S+)\s+(\S+)\s*$", "\n".join(ur_block), re.M).groups()
+check("PLFS cities", "Kolkata persons unemployment rate carries no high-error flag (the flag sits on the female rate)", kol_ur, ("2.2", "1.2*", "1.9"))
+check("PLFS cities", "Howrah persons unemployment rate is flagged as a high-error estimate", how_ur[2], "0.8*")
+
+rse_block = city[next(i for i, l in enumerate(city) if l.startswith("Table 13.1:")):]
+rse_k = re.search(r"^Kolkata MC\s+((?:[\d.]+\s+){8}[\d.]+)\s*$", "\n".join(rse_block), re.M).group(1).split()
+check("PLFS cities", "relative standard error of Kolkata's persons unemployment rate is 28.8% (below the 40% flag)", float(rse_k[8]), 28.8)
+
+# ---------- 5. Derived claims used in the text
+S = F["states"]
+fy = F["wb_fy"]
+check("claim", "West Bengal UG pass-outs, five years", sum(raw_ug[y][2] for y in FILES), 1885522)
+check("claim", "West Bengal formal entrants aged 18-25, five years (same financial-year labels)", sum(sep[(y, "18-21")] + sep[(y, "22-25")] for y in facts.YEARS), 890027)
+check("claim", "2024-25 net formal payroll, all ages", sum(sep[("2024-25", b)] for b in BK), 457697)
+check("claim", "2024-25 net formal payroll, ages 18-25", sep[("2024-25", "18-21")] + sep[("2024-25", "22-25")], 212064)
+check("claim", "net payroll peaked in 2022-23 (all ages)", max(facts.FYS, key=lambda y: fy[y]["all"]), "2022-23")
+young = [fy[y]["y1825"] for y in ("2022-23", "2023-24", "2024-25")]
+check("claim", "ages 18-25 stayed within 5% of 212,000 for three years", max(abs(v - 212064) / 212064 for v in young) < 0.05, True)
+a25 = sum(F["wb_month"][m] for m in ("Apr-25", "May-25", "Jun-25", "Jul-25")); a24 = sum(F["wb_month"][m] for m in ("Apr-24", "May-24", "Jun-24", "Jul-24"))
+check("claim", "April-July 2025 net payroll", a25, 214690); check("claim", "April-July 2024 net payroll", a24, 176091)
+check("claim", "April-July 2025 is about 22% above April-July 2024", round((a25 / a24 - 1) * 100), 22)
+check("claim", "October is West Bengal's lowest month, Apr-Nov 2024", min([m for m in F["wb_month"] if m.endswith("24")], key=F["wb_month"].get), "Oct-24")
+for k, v in {"A": 0.47, "B": 0.26, "C": 0.51, "D": 0.76}.items():
+    check("claim", f"scenario {k} ratio", round(F["scen"][k], 2), v)
+check("claim", "shortfall under baseline is about 1.0 million", round(F["gap_baseline"] / 1e6, 1), 1.0)
+check("claim", "shortfall under labour-force reading is about 0.28 million", round(F["gap_lf"] / 1e6, 2), 0.28)
+check("claim", "every scenario ratio is below one", all(v < 1 for v in F["scen"].values()), True)
+check("claim", "women's share of 2023-24 UG pass-outs is 52%", round(raw_ug["2023-24"][1] / raw_ug["2023-24"][2] * 100), 52)
+check("claim", "ten points more participation among 2023-24 women pass-outs = about 18,000", round(raw_ug["2023-24"][1] * 0.10, -3), 18000)
+def epfo_states_2324(pdf):
+    out, bucket, periods, in_state = {}, None, None, False
+    for line in pdf_text(pdf, "-layout").splitlines():
+        if "STATEWISE NEW PAYROLL DATA" in line: in_state = True
+        elif "INDUSTRY WISE PAYROLL DATA" in line: in_state = False
+        if not in_state: continue
+        m = re.match(r"\s*Age Bucket:\s*(.+?)\s*$", line)
+        if m: bucket = m.group(1)
+        elif line.startswith("State") and "2017-18" in line: periods = line.split()[1:]
+        else:
+            m = re.match(r"^([A-Z][A-Z &]+?)\s{2,}(-?\d[\d\s-]*)$", line)
+            if m and bucket in ("18-21", "22-25") and periods and m.group(1) not in ("SUB TOTAL", "TOTAL"):
+                vals = [int(v) for v in m.group(2).split()]
+                if len(vals) == len(periods):
+                    out[(m.group(1).strip(), bucket)] = vals[periods.index("2023-24")]
+    return out
+raw_es = epfo_states_2324(next((ROOT / "raw/epfo").glob("*September-2025*.pdf")))
+EPFO_NAME = {"Odisha": "ORISSA", "West Bengal": "WEST BENGAL"}
+for st, v in (("Odisha", 1.9), ("Jharkhand", 1.0), ("Bihar", 0.3), ("Assam", 0.7), ("Andhra Pradesh", 2.3), ("Kerala", 2.8), ("Tamil Nadu", 9.7), ("Telangana", 10.3), ("Karnataka", 10.8), ("Maharashtra", 11.1), ("West Bengal", 2.1)):
+    check("claim", f"{st}: formal entrants per 100 young people, 2023-24", float(S[st]["epfo_per_100_youth_2023_24"]), v)
+    pop = raw_pop[("2023-24", st)]
+    es = EPFO_NAME.get(st, st.upper())
+    check("claim", f"{st}: formal entrants per 100 young people recomputed from the raw payroll PDF and AISHE population", round((raw_es[(es, "18-21")] + raw_es[(es, "22-25")]) / pop * 100, 1), v)
+check("claim", "West Bengal records more than Odisha? No: Odisha, Jharkhand, Bihar, Assam are all lower than West Bengal", all(float(S[s]["epfo_per_100_youth_2023_24"]) < float(S["West Bengal"]["epfo_per_100_youth_2023_24"]) for s in ("Odisha", "Jharkhand", "Bihar", "Assam")), True)
+hub = [float(S[h]["epfo_per_100_youth_2023_24"]) for h in HUB]
+check("claim", "four large states record 9.7 to 11.1 per 100", (min(hub), max(hub)), (9.7, 11.1))
+adj = {r["state"]: r for r in facts.rows("adjacent_states_summary.csv")}
+lead = [c for c in ("ratio_A_baseline", "ratio_B_22_25_only", "ratio_C_lag", "ratio_D_lf_adjusted")
+        if all(float(adj["West Bengal"][c]) > float(adj[s][c]) for s in ("Odisha", "Jharkhand", "Bihar", "Assam"))]
+check("claim", "West Bengal's ratio is the highest of its four neighbours under all four scenarios", len(lead), 4)
+R = F["robust"]
+def rho(a, b):
+    def rk(x):
+        o = sorted(range(len(x)), key=lambda i: x[i]); r = [0] * len(x)
+        for k, i in enumerate(o): r[i] = k + 1
+        return r
+    ra, rb = rk(a), rk(b); n = len(a)
+    return 1 - 6 * sum((p - q) ** 2 for p, q in zip(ra, rb)) / (n * (n * n - 1))
+sts = list(R)
+e_ = [float(R[s]["epfo_per_100_youth"]) for s in sts]
+check("claim", "rank correlation, EPFO vs limited-company share", round(rho(e_, [float(R[s]["company_share_nonagri"]) for s in sts]), 2), 0.99)
+check("claim", "rank correlation, EPFO vs formal-job density", round(rho(e_, [float(R[s]["formal_job_density_per_100"]) for s in sts]), 2), 0.88)
+check("claim", "rank correlation, EPFO vs regular share", round(rho(e_, [float(R[s]["regular_share_of_workers"]) for s in sts]), 2), 0.83)
+dens = [float(R[h]["formal_job_density_per_100"]) for h in HUB]
+wbd = float(R["West Bengal"]["formal_job_density_per_100"])
+check("claim", "West Bengal formal-job density against four large states", (wbd, min(dens), max(dens)), (5.1, 9.0, 12.3))
+check("claim", "West Bengal density is 0.41 to 0.57 of theirs", (round(wbd / max(dens), 2), round(wbd / min(dens), 2)), (0.41, 0.57))
+check("claim", "formal-job density recomputed from raw tables for West Bengal (WPR x regular share x share with social security)", round(raw_wpr["West Bengal"][9] * t19["West Bengal"][3] / 100 * (1 - t36["West Bengal"][10] / 100), 1), 5.1)
+check("claim", "limited-company share: West Bengal 8.3, India 11.7, four large states 13.8-24.3", (t35["West Bengal"][3], RAW_INDIA["company"], min(t35[h][3] for h in HUB), max(t35[h][3] for h in HUB)), (8.3, 11.7, 13.8, 24.3))
+check("claim", "no social security: West Bengal 60.5, India 51.7, four large states 36.4-45.1", (t36["West Bengal"][10], RAW_INDIA["nossb"], min(t36[h][10] for h in HUB), max(t36[h][10] for h in HUB)), (60.5, 51.7, 36.4, 45.1))
+check("claim", "regular share: West Bengal 22.3, India 23.6, four large states 27.1-37.3", (t19["West Bengal"][3], RAW_INDIA["regular"], min(t19[h][3] for h in HUB), max(t19[h][3] for h in HUB)), (22.3, 23.6, 27.1, 37.3))
+check("claim", "only Bihar has more regular non-farm jobs without social security than West Bengal, among the states compared", sorted([s for s in sts if float(R[s]["regular_no_ssb_share"]) > 60.5]), ["Bihar"])
+check("claim", "graduate unemployment against all-adult rate is about four times", round(raw_ur["West Bengal"][6] / raw_ur["West Bengal"][9]), 4)
+gu = [float(S[h]["grad_ur"]) for h in HUB]
+check("claim", "graduate unemployment in the four large states ranges 6.8 to 17.6", (min(gu), max(gu)), (6.8, 17.6))
+gm = [raw_lf_m[h][6] for h in HUB]; gf = [raw_lf_f[h][6] for h in HUB]
+check("claim", "graduate men in labour force, four large states 85.0-87.9", (min(gm), max(gm)), (85.0, 87.9))
+check("claim", "graduate women in labour force, four large states 38.8-44.5", (min(gf), max(gf)), (38.8, 44.5))
+nonk = [(r["name"], float(r["neet_15_29"])) for r in F["districts"] if r["level"] == "district" and r["name"] != "Kolkata"]
+check("claim", "NEET 15-29 across the nine other districts ranges 25.6 to 38.2", (min(v for _, v in nonk), max(v for _, v in nonk)), (25.6, 38.2))
+check("claim", "Kolkata has the lowest NEET among the ten districts", min(F["districts"][1:], key=lambda r: float(r["neet_15_29"]))["name"], "Kolkata")
+check("claim", "matching Tamil Nadu would need about 4.6 times West Bengal's formal entry (payroll measure)", round(min(hub) / float(S["West Bengal"]["epfo_per_100_youth_2023_24"]), 1), 4.6)
+check("claim", "matching the lowest large state needs 1.8 to 2.4 times on the survey measure", (round(min(dens) / wbd, 1), round(max(dens) / wbd, 1)), (1.8, 2.4))
+
+# AISHE 2023-24 fall and response rates (raw workbooks)
+check("claim", "West Bengal UG pass-outs fell 18% from 2022-23 to 2023-24", round((raw_ug["2023-24"][2] / raw_ug["2022-23"][2] - 1) * 100), -18)
+resp = {}
+for y in ("2022-23", "2023-24"):
+    wbk = openpyxl.load_workbook(ROOT / "raw/aishe" / FILES[y], read_only=True, data_only=True)
+    sh = next(n for n in wbk.sheetnames if "insresponse" in n.lower().replace(" ", ""))
+    for r in wbk[sh].iter_rows(values_only=True):
+        if any(isinstance(c, str) and c.strip() == "West Bengal" for c in r):
+            nums = [c for c in r if isinstance(c, (int, float))]
+            resp[y] = (nums[-3], nums[-2])
+check("claim", "West Bengal institutions responding 2022-23 (registered, responded)", resp["2022-23"], (2249, 2243))
+check("claim", "West Bengal institutions responding 2023-24 (registered, responded)", resp["2023-24"], (2435, 2331))
+check("claim", "response rate fell by less than 5 points while pass-outs fell 18%", round(resp["2022-23"][1] / resp["2022-23"][0] * 100 - resp["2023-24"][1] / resp["2023-24"][0] * 100) < 5, True)
+for st in ("Tamil Nadu", "Telangana", "Karnataka", "Maharashtra", "West Bengal"):
+    check("claim", f"{st}: undergraduate pass-outs per 100 young people, 2023-24", round(F["ug"][("2023-24", st)][2] / raw_pop[("2023-24", st)] * 100, 1), float(S[st]["ug_per_100_youth_2023_24"]))
+ratio_ug = [float(S["West Bengal"]["ug_per_100_youth_2023_24"]) / float(S[h]["ug_per_100_youth_2023_24"]) for h in HUB]
+check("claim", "West Bengal's graduate output per young person is 38% to 64% of the four large states'", (round(min(ratio_ug) * 100), round(max(ratio_ug) * 100)), (38, 64))
+import json
+json.dump({"wages": wages, "india": RAW_INDIA, "kolkata_ur_rse": float(rse_k[8]), "months_national_total": nat},
+          open(Path(__file__).resolve().parent / "validated_values.json", "w"), indent=1)
+
+# ---------- write the log
+out = Path(__file__).resolve().parent / "validation_log.csv"
+with open(out, "w", newline="") as fh:
+    w = csv.writer(fh); w.writerow(["group", "claim", "value found", "value expected", "result"]); w.writerows(LOG)
+fails = [r for r in LOG if r[4] == "FAIL"]
+print(f"{len(LOG)} checks, {len(LOG) - len(fails)} passed, {len(fails)} failed")
+for r in fails: print("FAIL:", r[:4])
+sys.exit(1 if fails else 0)

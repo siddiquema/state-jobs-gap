@@ -1,0 +1,248 @@
+group,claim,value found,value expected,result
+AISHE,2019-20: level totals add up to the grand total,423109,423109,PASS
+AISHE,2020-21: level totals add up to the grand total,550296,550296,PASS
+AISHE,2021-22: level totals add up to the grand total,563911,563911,PASS
+AISHE,2022-23: level totals add up to the grand total,566108,566108,PASS
+AISHE,2023-24: level totals add up to the grand total,469065,469065,PASS
+AISHE,West Bengal UG pass-outs 2019-20 (raw workbook vs cleaned table),302453,302453,PASS
+AISHE,West Bengal UG male + female 2019-20 equal total,302453,302453,PASS
+AISHE,West Bengal UG pass-outs 2020-21 (raw workbook vs cleaned table),400113,400113,PASS
+AISHE,West Bengal UG male + female 2020-21 equal total,400113,400113,PASS
+AISHE,West Bengal UG pass-outs 2021-22 (raw workbook vs cleaned table),410187,410187,PASS
+AISHE,West Bengal UG male + female 2021-22 equal total,410187,410187,PASS
+AISHE,West Bengal UG pass-outs 2022-23 (raw workbook vs cleaned table),424345,424345,PASS
+AISHE,West Bengal UG male + female 2022-23 equal total,424345,424345,PASS
+AISHE,West Bengal UG pass-outs 2023-24 (raw workbook vs cleaned table),348424,348424,PASS
+AISHE,West Bengal UG male + female 2023-24 equal total,348424,348424,PASS
+AISHE,"West Bengal population aged 18-23, 2023-24",9992600,9992600,PASS
+EPFO,"West Bengal 2018-19, age band Less than 18 (raw PDF vs cleaned table)",2067,2067,PASS
+EPFO,"West Bengal 2018-19, age band 18-21 (raw PDF vs cleaned table)",73101,73101,PASS
+EPFO,"West Bengal 2018-19, age band 22-25 (raw PDF vs cleaned table)",79502,79502,PASS
+EPFO,"West Bengal 2018-19, age band 26-28 (raw PDF vs cleaned table)",36094,36094,PASS
+EPFO,"West Bengal 2018-19, age band 29-35 (raw PDF vs cleaned table)",45773,45773,PASS
+EPFO,"West Bengal 2018-19, age band More than 35 (raw PDF vs cleaned table)",27016,27016,PASS
+EPFO,"West Bengal 2019-20, age band Less than 18 (raw PDF vs cleaned table)",1655,1655,PASS
+EPFO,"West Bengal 2019-20, age band 18-21 (raw PDF vs cleaned table)",69553,69553,PASS
+EPFO,"West Bengal 2019-20, age band 22-25 (raw PDF vs cleaned table)",79101,79101,PASS
+EPFO,"West Bengal 2019-20, age band 26-28 (raw PDF vs cleaned table)",37748,37748,PASS
+EPFO,"West Bengal 2019-20, age band 29-35 (raw PDF vs cleaned table)",49347,49347,PASS
+EPFO,"West Bengal 2019-20, age band More than 35 (raw PDF vs cleaned table)",31005,31005,PASS
+EPFO,"West Bengal 2020-21, age band Less than 18 (raw PDF vs cleaned table)",1113,1113,PASS
+EPFO,"West Bengal 2020-21, age band 18-21 (raw PDF vs cleaned table)",53854,53854,PASS
+EPFO,"West Bengal 2020-21, age band 22-25 (raw PDF vs cleaned table)",69486,69486,PASS
+EPFO,"West Bengal 2020-21, age band 26-28 (raw PDF vs cleaned table)",35108,35108,PASS
+EPFO,"West Bengal 2020-21, age band 29-35 (raw PDF vs cleaned table)",47128,47128,PASS
+EPFO,"West Bengal 2020-21, age band More than 35 (raw PDF vs cleaned table)",14665,14665,PASS
+EPFO,"West Bengal 2021-22, age band Less than 18 (raw PDF vs cleaned table)",1424,1424,PASS
+EPFO,"West Bengal 2021-22, age band 18-21 (raw PDF vs cleaned table)",82509,82509,PASS
+EPFO,"West Bengal 2021-22, age band 22-25 (raw PDF vs cleaned table)",109049,109049,PASS
+EPFO,"West Bengal 2021-22, age band 26-28 (raw PDF vs cleaned table)",57001,57001,PASS
+EPFO,"West Bengal 2021-22, age band 29-35 (raw PDF vs cleaned table)",77905,77905,PASS
+EPFO,"West Bengal 2021-22, age band More than 35 (raw PDF vs cleaned table)",43707,43707,PASS
+EPFO,"West Bengal 2022-23, age band Less than 18 (raw PDF vs cleaned table)",1510,1510,PASS
+EPFO,"West Bengal 2022-23, age band 18-21 (raw PDF vs cleaned table)",94767,94767,PASS
+EPFO,"West Bengal 2022-23, age band 22-25 (raw PDF vs cleaned table)",122785,122785,PASS
+EPFO,"West Bengal 2022-23, age band 26-28 (raw PDF vs cleaned table)",69451,69451,PASS
+EPFO,"West Bengal 2022-23, age band 29-35 (raw PDF vs cleaned table)",107057,107057,PASS
+EPFO,"West Bengal 2022-23, age band More than 35 (raw PDF vs cleaned table)",92692,92692,PASS
+EPFO,"West Bengal 2023-24, age band Less than 18 (raw PDF vs cleaned table)",1423,1423,PASS
+EPFO,"West Bengal 2023-24, age band 18-21 (raw PDF vs cleaned table)",93997,93997,PASS
+EPFO,"West Bengal 2023-24, age band 22-25 (raw PDF vs cleaned table)",114926,114926,PASS
+EPFO,"West Bengal 2023-24, age band 26-28 (raw PDF vs cleaned table)",65854,65854,PASS
+EPFO,"West Bengal 2023-24, age band 29-35 (raw PDF vs cleaned table)",105919,105919,PASS
+EPFO,"West Bengal 2023-24, age band More than 35 (raw PDF vs cleaned table)",94320,94320,PASS
+EPFO,"West Bengal 2024-25, age band Less than 18 (raw PDF vs cleaned table)",1453,1453,PASS
+EPFO,"West Bengal 2024-25, age band 18-21 (raw PDF vs cleaned table)",99373,99373,PASS
+EPFO,"West Bengal 2024-25, age band 22-25 (raw PDF vs cleaned table)",112691,112691,PASS
+EPFO,"West Bengal 2024-25, age band 26-28 (raw PDF vs cleaned table)",62829,62829,PASS
+EPFO,"West Bengal 2024-25, age band 29-35 (raw PDF vs cleaned table)",101537,101537,PASS
+EPFO,"West Bengal 2024-25, age band More than 35 (raw PDF vs cleaned table)",79814,79814,PASS
+EPFO,Jan-2025 and Sep-2025 releases agree for 2018-19 (all six age bands),True,True,PASS
+EPFO,Jan-2025 and Sep-2025 releases agree for 2019-20 (all six age bands),True,True,PASS
+EPFO,Jan-2025 and Sep-2025 releases agree for 2020-21 (all six age bands),True,True,PASS
+EPFO,Jan-2025 and Sep-2025 releases agree for 2021-22 (all six age bands),True,True,PASS
+EPFO,Jan-2025 and Sep-2025 releases agree for 2022-23 (all six age bands),True,True,PASS
+EPFO,Jan-2025 and Sep-2025 releases agree for 2023-24 (all six age bands),True,True,PASS
+EPFO,West Bengal net payroll Apr-24 (all ages),47556,47556,PASS
+EPFO,West Bengal net payroll May-24 (all ages),45854,45854,PASS
+EPFO,West Bengal net payroll Jun-24 (all ages),31378,31378,PASS
+EPFO,West Bengal net payroll Jul-24 (all ages),51303,51303,PASS
+EPFO,West Bengal net payroll Aug-24 (all ages),45723,45723,PASS
+EPFO,West Bengal net payroll Sep-24 (all ages),42313,42313,PASS
+EPFO,West Bengal net payroll Oct-24 (all ages),27704,27704,PASS
+EPFO,West Bengal net payroll Nov-24 (all ages),45700,45700,PASS
+EPFO,West Bengal net payroll Apr-25 (all ages),57670,57670,PASS
+EPFO,West Bengal net payroll May-25 (all ages),41904,41904,PASS
+EPFO,West Bengal net payroll Jun-25 (all ages),52985,52985,PASS
+EPFO,West Bengal net payroll Jul-25 (all ages),62131,62131,PASS
+EPFO,"definition: net payroll = new subscribers - exits + rejoiners (national, 2017-18)",1552940,1552940,PASS
+EPFO,"October 2024 is the lowest month nationally, Apr-Nov 2024",Oct,Oct,PASS
+PLFS,"unemployment, West Bengal, not literate",0.2,0.2,PASS
+PLFS,"labour force participation, West Bengal, not literate",55.7,55.7,PASS
+PLFS,"unemployment, all India, not literate",0.3,0.3,PASS
+PLFS,"labour force participation, all India, not literate",57.2,57.2,PASS
+PLFS,"unemployment, West Bengal, literate & up to primary",0.6,0.6,PASS
+PLFS,"labour force participation, West Bengal, literate & up to primary",69.9,69.9,PASS
+PLFS,"unemployment, all India, literate & up to primary",0.6,0.6,PASS
+PLFS,"labour force participation, all India, literate & up to primary",67.4,67.4,PASS
+PLFS,"unemployment, West Bengal, middle",2.2,2.2,PASS
+PLFS,"labour force participation, West Bengal, middle",56.0,56.0,PASS
+PLFS,"unemployment, all India, middle",1.6,1.6,PASS
+PLFS,"labour force participation, all India, middle",60.6,60.6,PASS
+PLFS,"unemployment, West Bengal, secondary",2.8,2.8,PASS
+PLFS,"labour force participation, West Bengal, secondary",48.3,48.3,PASS
+PLFS,"unemployment, all India, secondary",2.1,2.1,PASS
+PLFS,"labour force participation, all India, secondary",49.9,49.9,PASS
+PLFS,"unemployment, West Bengal, higher secondary",6.4,6.4,PASS
+PLFS,"labour force participation, West Bengal, higher secondary",49.6,49.6,PASS
+PLFS,"unemployment, all India, higher secondary",4.7,4.7,PASS
+PLFS,"labour force participation, all India, higher secondary",49.5,49.5,PASS
+PLFS,"unemployment, West Bengal, diploma/certificate course",11.6,11.6,PASS
+PLFS,"labour force participation, West Bengal, diploma/certificate course",82.1,82.1,PASS
+PLFS,"unemployment, all India, diploma/certificate course",6.9,6.9,PASS
+PLFS,"labour force participation, all India, diploma/certificate course",78.6,78.6,PASS
+PLFS,"unemployment, West Bengal, graduate",11.4,11.4,PASS
+PLFS,"labour force participation, West Bengal, graduate",65.9,65.9,PASS
+PLFS,"unemployment, all India, graduate",11.2,11.2,PASS
+PLFS,"labour force participation, all India, graduate",66.2,66.2,PASS
+PLFS,"unemployment, West Bengal, post graduate & above",6.3,6.3,PASS
+PLFS,"labour force participation, West Bengal, post graduate & above",72.0,72.0,PASS
+PLFS,"unemployment, all India, post graduate & above",10.0,10.0,PASS
+PLFS,"labour force participation, all India, post graduate & above",70.7,70.7,PASS
+PLFS,"unemployment, West Bengal, secondary & above",6.8,6.8,PASS
+PLFS,"labour force participation, West Bengal, secondary & above",54.9,54.9,PASS
+PLFS,"unemployment, all India, secondary & above",6.5,6.5,PASS
+PLFS,"labour force participation, all India, secondary & above",56.5,56.5,PASS
+PLFS,"unemployment, West Bengal, all",2.8,2.8,PASS
+PLFS,"labour force participation, West Bengal, all",59.1,59.1,PASS
+PLFS,"unemployment, all India, all",3.1,3.1,PASS
+PLFS,"labour force participation, all India, all",59.3,59.3,PASS
+PLFS,"graduate men in labour force, West Bengal",85.7,85.7,PASS
+PLFS,"graduate women in labour force, West Bengal",40.2,40.2,PASS
+PLFS,"graduate men in labour force, all India",86.9,86.9,PASS
+PLFS,"graduate women in labour force, all India",39.2,39.2,PASS
+PLFS,"West Bengal: regular wage/salaried share of workers (Table 19, column 4)",22.3,22.3,PASS
+PLFS,"West Bengal: share of non-farm workers in limited companies (Table 35, column 4)",8.3,8.3,PASS
+PLFS,"West Bengal: regular non-farm jobs with no social security (Table 36, persons)",60.5,60.5,PASS
+PLFS,"Tamil Nadu: regular wage/salaried share of workers (Table 19, column 4)",37.3,37.3,PASS
+PLFS,"Tamil Nadu: share of non-farm workers in limited companies (Table 35, column 4)",17.6,17.6,PASS
+PLFS,"Tamil Nadu: regular non-farm jobs with no social security (Table 36, persons)",45.1,45.1,PASS
+PLFS,"Telangana: regular wage/salaried share of workers (Table 19, column 4)",27.1,27.1,PASS
+PLFS,"Telangana: share of non-farm workers in limited companies (Table 35, column 4)",13.8,13.8,PASS
+PLFS,"Telangana: regular non-farm jobs with no social security (Table 36, persons)",43.0,43.0,PASS
+PLFS,"Karnataka: regular wage/salaried share of workers (Table 19, column 4)",29.2,29.2,PASS
+PLFS,"Karnataka: share of non-farm workers in limited companies (Table 35, column 4)",19.8,19.8,PASS
+PLFS,"Karnataka: regular non-farm jobs with no social security (Table 36, persons)",36.4,36.4,PASS
+PLFS,"Maharashtra: regular wage/salaried share of workers (Table 19, column 4)",32.8,32.8,PASS
+PLFS,"Maharashtra: share of non-farm workers in limited companies (Table 35, column 4)",24.3,24.3,PASS
+PLFS,"Maharashtra: regular non-farm jobs with no social security (Table 36, persons)",45.0,45.0,PASS
+PLFS,"Odisha: regular wage/salaried share of workers (Table 19, column 4)",15.0,15.0,PASS
+PLFS,"Odisha: share of non-farm workers in limited companies (Table 35, column 4)",7.4,7.4,PASS
+PLFS,"Odisha: regular non-farm jobs with no social security (Table 36, persons)",50.2,50.2,PASS
+PLFS,"Jharkhand: regular wage/salaried share of workers (Table 19, column 4)",13.7,13.7,PASS
+PLFS,"Jharkhand: share of non-farm workers in limited companies (Table 35, column 4)",6.7,6.7,PASS
+PLFS,"Jharkhand: regular non-farm jobs with no social security (Table 36, persons)",56.4,56.4,PASS
+PLFS,"Bihar: regular wage/salaried share of workers (Table 19, column 4)",12.0,12.0,PASS
+PLFS,"Bihar: share of non-farm workers in limited companies (Table 35, column 4)",2.0,2.0,PASS
+PLFS,"Bihar: regular non-farm jobs with no social security (Table 36, persons)",61.3,61.3,PASS
+PLFS,"Assam: regular wage/salaried share of workers (Table 19, column 4)",17.9,17.9,PASS
+PLFS,"Assam: share of non-farm workers in limited companies (Table 35, column 4)",6.3,6.3,PASS
+PLFS,"Assam: regular non-farm jobs with no social security (Table 36, persons)",51.4,51.4,PASS
+PLFS,"Andhra Pradesh: regular wage/salaried share of workers (Table 19, column 4)",23.6,23.6,PASS
+PLFS,"Andhra Pradesh: share of non-farm workers in limited companies (Table 35, column 4)",9.4,9.4,PASS
+PLFS,"Andhra Pradesh: regular non-farm jobs with no social security (Table 36, persons)",53.7,53.7,PASS
+PLFS,"Kerala: regular wage/salaried share of workers (Table 19, column 4)",40.0,40.0,PASS
+PLFS,"Kerala: share of non-farm workers in limited companies (Table 35, column 4)",11.0,11.0,PASS
+PLFS,"Kerala: regular non-farm jobs with no social security (Table 36, persons)",59.4,59.4,PASS
+PLFS cities,number of million-plus cities with a regular wage estimate,46,46,PASS
+PLFS cities,Kolkata average regular wage (Rs a month),19093,19093,PASS
+PLFS cities,Kolkata rank among cities from the lowest wage (5 = fifth lowest),5,5,PASS
+PLFS cities,Howrah rank from the lowest wage,16,16,PASS
+PLFS cities,Greater Mumbai average regular wage,36267,36267,PASS
+PLFS cities,Chennai average regular wage,28955,28955,PASS
+PLFS districts,West Bengal: unemployment and NEET 15-29,"(2.8, 29.9)","(2.8, 29.9)",PASS
+PLFS districts,North Twenty-Four Parganas: unemployment and NEET 15-29,"(1.6, 27.0)","(1.6, 27.0)",PASS
+PLFS districts,South Twenty-Four Parganas: unemployment and NEET 15-29,"(0.9, 30.9)","(0.9, 30.9)",PASS
+PLFS districts,Murshidabad: unemployment and NEET 15-29,"(4.5, 34.8)","(4.5, 34.8)",PASS
+PLFS districts,Purba Medinipur: unemployment and NEET 15-29,"(3.2, 31.1)","(3.2, 31.1)",PASS
+PLFS districts,Nadia: unemployment and NEET 15-29,"(5.4, 36.0)","(5.4, 36.0)",PASS
+PLFS districts,Paschim Medinipur: unemployment and NEET 15-29,"(2.2, 38.2)","(2.2, 38.2)",PASS
+PLFS districts,Hooghly: unemployment and NEET 15-29,"(3.2, 36.8)","(3.2, 36.8)",PASS
+PLFS districts,Purba Bardhaman: unemployment and NEET 15-29,"(3.6, 25.6)","(3.6, 25.6)",PASS
+PLFS districts,Howrah: unemployment and NEET 15-29,"(2.5, 34.5)","(2.5, 34.5)",PASS
+PLFS districts,Kolkata: unemployment and NEET 15-29,"(1.9, 21.9)","(1.9, 21.9)",PASS
+PLFS cities,Kolkata persons unemployment rate carries no high-error flag (the flag sits on the female rate),"('2.2', '1.2*', '1.9')","('2.2', '1.2*', '1.9')",PASS
+PLFS cities,Howrah persons unemployment rate is flagged as a high-error estimate,0.8*,0.8*,PASS
+PLFS cities,relative standard error of Kolkata's persons unemployment rate is 28.8% (below the 40% flag),28.8,28.8,PASS
+claim,"West Bengal UG pass-outs, five years",1885522,1885522,PASS
+claim,"West Bengal formal entrants aged 18-25, five years (same financial-year labels)",890027,890027,PASS
+claim,"2024-25 net formal payroll, all ages",457697,457697,PASS
+claim,"2024-25 net formal payroll, ages 18-25",212064,212064,PASS
+claim,net payroll peaked in 2022-23 (all ages),2022-23,2022-23,PASS
+claim,"ages 18-25 stayed within 5% of 212,000 for three years",True,True,PASS
+claim,April-July 2025 net payroll,214690,214690,PASS
+claim,April-July 2024 net payroll,176091,176091,PASS
+claim,April-July 2025 is about 22% above April-July 2024,22,22,PASS
+claim,"October is West Bengal's lowest month, Apr-Nov 2024",Oct-24,Oct-24,PASS
+claim,scenario A ratio,0.47,0.47,PASS
+claim,scenario B ratio,0.26,0.26,PASS
+claim,scenario C ratio,0.51,0.51,PASS
+claim,scenario D ratio,0.76,0.76,PASS
+claim,shortfall under baseline is about 1.0 million,1.0,1.0,PASS
+claim,shortfall under labour-force reading is about 0.28 million,0.28,0.28,PASS
+claim,every scenario ratio is below one,True,True,PASS
+claim,women's share of 2023-24 UG pass-outs is 52%,52,52,PASS
+claim,"ten points more participation among 2023-24 women pass-outs = about 18,000",18000.0,18000,PASS
+claim,"Odisha: formal entrants per 100 young people, 2023-24",1.9,1.9,PASS
+claim,Odisha: formal entrants per 100 young people recomputed from the raw payroll PDF and AISHE population,1.9,1.9,PASS
+claim,"Jharkhand: formal entrants per 100 young people, 2023-24",1.0,1.0,PASS
+claim,Jharkhand: formal entrants per 100 young people recomputed from the raw payroll PDF and AISHE population,1.0,1.0,PASS
+claim,"Bihar: formal entrants per 100 young people, 2023-24",0.3,0.3,PASS
+claim,Bihar: formal entrants per 100 young people recomputed from the raw payroll PDF and AISHE population,0.3,0.3,PASS
+claim,"Assam: formal entrants per 100 young people, 2023-24",0.7,0.7,PASS
+claim,Assam: formal entrants per 100 young people recomputed from the raw payroll PDF and AISHE population,0.7,0.7,PASS
+claim,"Andhra Pradesh: formal entrants per 100 young people, 2023-24",2.3,2.3,PASS
+claim,Andhra Pradesh: formal entrants per 100 young people recomputed from the raw payroll PDF and AISHE population,2.3,2.3,PASS
+claim,"Kerala: formal entrants per 100 young people, 2023-24",2.8,2.8,PASS
+claim,Kerala: formal entrants per 100 young people recomputed from the raw payroll PDF and AISHE population,2.8,2.8,PASS
+claim,"Tamil Nadu: formal entrants per 100 young people, 2023-24",9.7,9.7,PASS
+claim,Tamil Nadu: formal entrants per 100 young people recomputed from the raw payroll PDF and AISHE population,9.7,9.7,PASS
+claim,"Telangana: formal entrants per 100 young people, 2023-24",10.3,10.3,PASS
+claim,Telangana: formal entrants per 100 young people recomputed from the raw payroll PDF and AISHE population,10.3,10.3,PASS
+claim,"Karnataka: formal entrants per 100 young people, 2023-24",10.8,10.8,PASS
+claim,Karnataka: formal entrants per 100 young people recomputed from the raw payroll PDF and AISHE population,10.8,10.8,PASS
+claim,"Maharashtra: formal entrants per 100 young people, 2023-24",11.1,11.1,PASS
+claim,Maharashtra: formal entrants per 100 young people recomputed from the raw payroll PDF and AISHE population,11.1,11.1,PASS
+claim,"West Bengal: formal entrants per 100 young people, 2023-24",2.1,2.1,PASS
+claim,West Bengal: formal entrants per 100 young people recomputed from the raw payroll PDF and AISHE population,2.1,2.1,PASS
+claim,"West Bengal records more than Odisha? No: Odisha, Jharkhand, Bihar, Assam are all lower than West Bengal",True,True,PASS
+claim,four large states record 9.7 to 11.1 per 100,"(9.7, 11.1)","(9.7, 11.1)",PASS
+claim,West Bengal's ratio is the highest of its four neighbours under all four scenarios,4,4,PASS
+claim,"rank correlation, EPFO vs limited-company share",0.99,0.99,PASS
+claim,"rank correlation, EPFO vs formal-job density",0.88,0.88,PASS
+claim,"rank correlation, EPFO vs regular share",0.83,0.83,PASS
+claim,West Bengal formal-job density against four large states,"(5.1, 9.0, 12.3)","(5.1, 9.0, 12.3)",PASS
+claim,West Bengal density is 0.41 to 0.57 of theirs,"(0.41, 0.57)","(0.41, 0.57)",PASS
+claim,formal-job density recomputed from raw tables for West Bengal (WPR x regular share x share with social security),5.1,5.1,PASS
+claim,"limited-company share: West Bengal 8.3, India 11.7, four large states 13.8-24.3","(8.3, 11.7, 13.8, 24.3)","(8.3, 11.7, 13.8, 24.3)",PASS
+claim,"no social security: West Bengal 60.5, India 51.7, four large states 36.4-45.1","(60.5, 51.7, 36.4, 45.1)","(60.5, 51.7, 36.4, 45.1)",PASS
+claim,"regular share: West Bengal 22.3, India 23.6, four large states 27.1-37.3","(22.3, 23.6, 27.1, 37.3)","(22.3, 23.6, 27.1, 37.3)",PASS
+claim,"only Bihar has more regular non-farm jobs without social security than West Bengal, among the states compared",['Bihar'],['Bihar'],PASS
+claim,graduate unemployment against all-adult rate is about four times,4,4,PASS
+claim,graduate unemployment in the four large states ranges 6.8 to 17.6,"(6.8, 17.6)","(6.8, 17.6)",PASS
+claim,"graduate men in labour force, four large states 85.0-87.9","(85.0, 87.9)","(85.0, 87.9)",PASS
+claim,"graduate women in labour force, four large states 38.8-44.5","(38.8, 44.5)","(38.8, 44.5)",PASS
+claim,NEET 15-29 across the nine other districts ranges 25.6 to 38.2,"(25.6, 38.2)","(25.6, 38.2)",PASS
+claim,Kolkata has the lowest NEET among the ten districts,Kolkata,Kolkata,PASS
+claim,matching Tamil Nadu would need about 4.6 times West Bengal's formal entry (payroll measure),4.6,4.6,PASS
+claim,matching the lowest large state needs 1.8 to 2.4 times on the survey measure,"(1.8, 2.4)","(1.8, 2.4)",PASS
+claim,West Bengal UG pass-outs fell 18% from 2022-23 to 2023-24,-18,-18,PASS
+claim,"West Bengal institutions responding 2022-23 (registered, responded)","(2249, 2243)","(2249, 2243)",PASS
+claim,"West Bengal institutions responding 2023-24 (registered, responded)","(2435, 2331)","(2435, 2331)",PASS
+claim,response rate fell by less than 5 points while pass-outs fell 18%,True,True,PASS
+claim,"Tamil Nadu: undergraduate pass-outs per 100 young people, 2023-24",9.1,9.1,PASS
+claim,"Telangana: undergraduate pass-outs per 100 young people, 2023-24",6.5,6.5,PASS
+claim,"Karnataka: undergraduate pass-outs per 100 young people, 2023-24",6.8,6.8,PASS
+claim,"Maharashtra: undergraduate pass-outs per 100 young people, 2023-24",5.5,5.5,PASS
+claim,"West Bengal: undergraduate pass-outs per 100 young people, 2023-24",3.5,3.5,PASS
+claim,West Bengal's graduate output per young person is 38% to 64% of the four large states',"(38, 64)","(38, 64)",PASS
