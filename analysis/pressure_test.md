@@ -24,7 +24,7 @@ The ratio ranges from 0.26 to 0.76 depending on assumptions. "West Bengal regist
 | Karnataka | 6.8 | 10.8 | 1.60 |
 | Maharashtra | 5.5 | 11.1 | 2.02 |
 
-(2022-23 gives the same picture, in `data/pressure_test_peers_per_youth.csv`.) West Bengal's formal entry per young person is about a fifth of the peers', a much larger gap than its graduate output per young person (about half to two-thirds). **The low ratio comes mostly from thin formal-sector entry, not from an unusual surplus of graduates.** Matching the lowest peer (Tamil Nadu, 9.7 per 100) would mean about 0.97 million formal entrants a year against about 0.21 million now, roughly 4.6 times. Ages are not identical (18-25 vs 18-23), which does not change the order of magnitude.
+(2022-23 gives the same picture, in `data/pressure_test_peers_per_youth.csv`.) West Bengal's formal entry per young person is about a fifth of the peers', a much larger gap than its graduate output per young person (about 40-65% of the peers'). **The low ratio comes mostly from thin formal-sector entry, not from an unusual surplus of graduates.** Matching the lowest peer (Tamil Nadu, 9.7 per 100) would mean about 0.97 million formal entrants a year against about 0.21 million now, roughly 4.6 times. Ages are not identical (18-25 vs 18-23), which does not change the order of magnitude.
 
 ## Claim-by-claim verdicts
 
