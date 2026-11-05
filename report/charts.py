@@ -143,3 +143,33 @@ def hbars_grouped(cats, series, width=620, row_h=44, label_w=170, fmt=lambda v: 
             out.append(text(x0 + vs[i] / vmax * (x1 - x0) + 5, yy + bh - 5, fmt(vs[i]), 11, NAVY))
     out.append(f'<line x1="{x0}" x2="{x0}" y1="{top-2}" y2="{height-4}" stroke="{RULE}"/>')
     return svg(width, height, "".join(out))
+
+
+def bridge(items, width=640, height=330, fmt=lambda v: f"{abs(v):.2f}", sign=True):
+    """Vertical bridge. items: (label with \\n for line breaks, value, kind, color); kind 'total' | 'down' | 'ref' (a bar from zero, no connector)."""
+    left, right, base, top = 8, width - 8, height - 46, 30
+    vmax = max(v for _, v, k, _ in items if k != "down")
+    h = lambda v: v / vmax * (base - top - 14)
+    n = len(items)
+    band = (right - left) / n
+    bw = band * 0.62
+    out = [f'<line x1="{left}" x2="{right}" y1="{base}" y2="{base}" stroke="{RULE}"/>']
+    level, prev_x = 0.0, None
+    for i, (label, v, kind, color) in enumerate(items):
+        x = left + i * band + (band - bw) / 2
+        if prev_x is not None and kind != "ref":
+            out.append(f'<line x1="{prev_x:.1f}" x2="{x:.1f}" y1="{base-h(level):.1f}" y2="{base-h(level):.1f}" stroke="{GREY}" stroke-dasharray="2 2"/>')
+        if kind == "down":
+            y_top, y_bot = base - h(level), base - h(level - v)
+            out.append(f'<rect x="{x:.1f}" y="{y_top:.1f}" width="{bw:.1f}" height="{y_bot-y_top:.1f}" fill="{color}"/>')
+            out.append(text(x + bw / 2, y_bot + 13, ("\u2212" if sign else "") + fmt(v), 10.5, NAVY, "middle"))
+            level -= v
+        else:
+            out.append(f'<rect x="{x:.1f}" y="{base-h(v):.1f}" width="{bw:.1f}" height="{h(v):.1f}" fill="{color}"/>')
+            out.append(text(x + bw / 2, base - h(v) - 5, fmt(v), 10.5, NAVY, "middle", "bold"))
+            if kind == "total":
+                level = v
+        prev_x = x + bw
+        for j, ln in enumerate(label.split("\n")):
+            out.append(text(x + bw / 2, base + 15 + j * 12.5, ln, 10.5, MID, "middle"))
+    return svg(width, height, "".join(out))

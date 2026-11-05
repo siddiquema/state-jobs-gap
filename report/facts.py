@@ -55,6 +55,19 @@ def build():
     F["lf_supply"] = sum(F["wb_ug"][y][0] * lfm + F["wb_ug"][y][1] * lff for y in YEARS)
     F["gap_baseline"] = sup - a
     F["gap_lf"] = F["lf_supply"] - a
+    # --- bridge from pass-outs to employed graduates (illustrative, five years)
+    pg = {r["year"]: int(r["total"]) for r in rows("aishe_outturn_by_state.csv") if r["state"] == "West Bengal" and r["level"] == "Post Graduate"}
+    F["wb_pg"] = pg
+    ur_g = edu[("UR", "rural+urban", "persons", "West Bengal", "graduate")] / 100
+    pg5 = sum(pg[y] for y in YEARS)
+    remaining = sup - pg5
+    share = F["lf_supply"] / sup
+    in_lf = remaining * share
+    f2225 = sum(F["wb_fy"][y]["y2225"] for y in YEARS)
+    emp_pg, emp_nopg = in_lf * (1 - ur_g), F["lf_supply"] * (1 - ur_g)
+    F["bridge"] = {"ug": sup, "pg": pg5, "remaining": remaining, "lf_share": share, "in_lf": in_lf, "out_lf": remaining - in_lf, "unemployed": in_lf * ur_g,
+                   "employed": emp_pg, "employed_no_pg": emp_nopg, "formal_1825": a, "formal_2225": f2225,
+                   "res_pg_1825": emp_pg - a, "res_pg_2225": emp_pg - f2225, "res_nopg_1825": emp_nopg - a, "res_nopg_2225": emp_nopg - f2225}
     # --- states: per 100 youth, graduate unemployment, NEET (cleaned tables)
     st = {}
     for f in ("large_states_summary.csv", "adjacent_states_summary.csv"):
@@ -67,6 +80,11 @@ def build():
     F["cities_tn"] = rows("tamil_nadu_cities.csv")
     F["cities_mh"] = rows("maharashtra_cities.csv")
     return F
+
+
+def margin_of_error(n, deff=1.5, p=0.5):
+    """95% margin of error in percentage points for a proportion from n respondents, design effect deff."""
+    return 1.96 * (deff * p * (1 - p) / n) ** 0.5 * 100
 
 
 if __name__ == "__main__":

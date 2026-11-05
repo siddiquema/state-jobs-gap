@@ -15,6 +15,11 @@ AISHE,West Bengal UG male + female 2022-23 equal total,424345,424345,PASS
 AISHE,West Bengal UG pass-outs 2023-24 (raw workbook vs cleaned table),348424,348424,PASS
 AISHE,West Bengal UG male + female 2023-24 equal total,348424,348424,PASS
 AISHE,"West Bengal population aged 18-23, 2023-24",9992600,9992600,PASS
+AISHE,West Bengal PG pass-outs 2019-20 (raw workbook vs cleaned table),64717,64717,PASS
+AISHE,West Bengal PG pass-outs 2020-21 (raw workbook vs cleaned table),90955,90955,PASS
+AISHE,West Bengal PG pass-outs 2021-22 (raw workbook vs cleaned table),73179,73179,PASS
+AISHE,West Bengal PG pass-outs 2022-23 (raw workbook vs cleaned table),72653,72653,PASS
+AISHE,West Bengal PG pass-outs 2023-24 (raw workbook vs cleaned table),51512,51512,PASS
 EPFO,"West Bengal 2018-19, age band Less than 18 (raw PDF vs cleaned table)",2067,2067,PASS
 EPFO,"West Bengal 2018-19, age band 18-21 (raw PDF vs cleaned table)",73101,73101,PASS
 EPFO,"West Bengal 2018-19, age band 22-25 (raw PDF vs cleaned table)",79502,79502,PASS
@@ -154,6 +159,18 @@ PLFS,"Andhra Pradesh: regular non-farm jobs with no social security (Table 36, p
 PLFS,"Kerala: regular wage/salaried share of workers (Table 19, column 4)",40.0,40.0,PASS
 PLFS,"Kerala: share of non-farm workers in limited companies (Table 35, column 4)",11.0,11.0,PASS
 PLFS,"Kerala: regular non-farm jobs with no social security (Table 36, persons)",59.4,59.4,PASS
+bridge,"PG pass-outs, five years (proxy for continuing to a master's)",353016,353016,PASS
+bridge,PG pass-outs are about 19% of UG pass-outs,19,19,PASS
+bridge,graduates outside the labour force after PG deduction (thousands),584,584,PASS
+bridge,unemployed graduates (thousands),108,108,PASS
+bridge,"employed graduates, PG deducted (thousands)",841,841,PASS
+bridge,"remainder after adjustments, PG deducted, ages 18-25 (thousands)",-49,-49,PASS
+bridge,"remainder after adjustments, PG deducted, ages 22-25 (thousands)",345,345,PASS
+bridge,"remainder after adjustments, no PG deduction, ages 18-25 (thousands)",144,144,PASS
+bridge,"remainder after adjustments, no PG deduction, ages 22-25 (thousands)",539,539,PASS
+bridge,the four remainders range from about -0.05 to +0.54 million,"(-0.05, 0.54)","(-0.05, 0.54)",PASS
+design,"margin of error for 15000 respondents (95%, design effect 1.5), points",0.98,0.98,PASS
+design,"margin of error for 1250 respondents (95%, design effect 1.5), points",3.4,3.4,PASS
 PLFS cities,number of million-plus cities with a regular wage estimate,46,46,PASS
 PLFS cities,Kolkata average regular wage (Rs a month),19093,19093,PASS
 PLFS cities,Kolkata rank among cities from the lowest wage (5 = fifth lowest),5,5,PASS
