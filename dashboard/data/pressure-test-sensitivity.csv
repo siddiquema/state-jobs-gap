@@ -1,5 +1,0 @@
-scenario,numerator,denominator,ratio,note
-A. Baseline: EPFO 18-25 / all UG pass-outs,890027,1885522,0.47,As on the dashboard.
-B. Graduate-age band only: EPFO 22-25 / all UG pass-outs,495347,1885522,0.26,"18-21 entrants are mostly school leavers, not graduates."
-C. One-year lag: EPFO 18-25 in the following year / pass-outs,953437,1885522,0.51,Graduates mostly join the year after.
-D. Pass-outs adjusted for labour-force participation,890027,1167582,0.76,"Pass-outs x PLFS 2025 graduate participation by sex (men 85.7%, women 40.2%). Upper bound: recent graduates participate less."
