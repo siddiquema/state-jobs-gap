@@ -23,4 +23,4 @@ Dataset ids matter: the page reads them by id (`gap`, `peers`, `education`, `dis
 
 ## Notes
 - The published page is a snapshot of the analysis at 2026-11-05. If `analysis/` changes, rebuild the data and update the page text; numbers in the page come from the data files, but some sentences (for example, which states form the "high-entry" group) are fixed wording in `index.html`.
-- `kolkata-benchmarks.csv` was copied by hand from the PLFS Million-plus Cities report (see `analysis/tamil_nadu.md` and `analysis/other_large_states.md` for the extraction script that reproduces more cities).
+- `kolkata-benchmarks.csv` (from `data/plfs2025_kolkata_howrah_vs_benchmarks.csv`) was copied by hand from the PLFS Million-plus Cities report. `scripts/extract_plfs_city_rows.py` extracts the same indicators for any cities directly from that report.
