@@ -30,7 +30,7 @@ Bordering states: Odisha, Jharkhand, Bihar, Assam, Sikkim. Method, sources and c
 ## What the comparison shows
 - **West Bengal is the strongest of its neighbours on formal entry, under every scenario.** Its ratio is highest under A, B, C and D (0.47, 0.26, 0.51, 0.76), and its formal entry per young person (2.1 per 100) is above Odisha's (1.9) and well above Jharkhand's, Assam's and Bihar's. The ordering does not depend on the assumptions behind the pressure test.
 - **Against the south and west, every eastern state is far behind.** Even Odisha, the closest, registers a fifth of the formal entry per young person that Karnataka or Maharashtra does. The shortfall looks regional, not specific to West Bengal.
-- **Graduate unemployment is lower in West Bengal (11.4%) than in all four neighbours with a comparable sample (13.0% to 18.1%).** All are above the all-adult rate by a factor of four to six.
+- **Graduate unemployment is lower in West Bengal (11.4%) than in all four neighbours with a comparable sample (13.0% to 18.1%).** Each is 3.5 to 5.5 times the all-adult rate.
 - **Graduate women's participation varies widely** (24.5% in Bihar to 53.2% in Assam; West Bengal 40.2%). Where participation is low, the unexplained shortfall is smaller after adjustment (scenario D), but the formal-entry ratio stays far below one everywhere in the region.
 - **Bihar's 0.09** says that almost no young formal-sector entry is recorded in the state against about two million undergraduate pass-outs in five years. Bihar students commonly study in other states, and AISHE counts pass-outs by the state of the institution, so Bihar-origin graduates are undercounted at home and counted elsewhere.
 
