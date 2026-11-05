@@ -31,7 +31,7 @@ Note: the 2025 PLFS district snapshot names Kerala "Keralam"; the script maps it
 - **West Bengal's result is therefore not a West Bengal peculiarity.** Two southern states look the same as it does. The contrast is between a few states with very high formal entry per young person and the rest.
 - **Graduate unemployment does not follow formal entry in a simple way.** Telangana pairs high formal entry (10.3 per 100) with high graduate unemployment (17.6%); Andhra Pradesh pairs low entry with the highest rate (21.6%); Karnataka has high entry and the lowest rate (7.9%). Rates carry about 2 points of sampling error.
 - **Kerala is different on women.** Women are 64% of its pass-outs and graduate women's participation (53.7%) is the highest of the six states.
-- **West Bengal's graduate unemployment (11.4%) is the second lowest of the six**, after Karnataka (7.9%) and level with Tamil Nadu (11.2%).
+- **West Bengal's graduate unemployment (11.4%) is the third lowest of the six**, behind Karnataka (7.9%) and Tamil Nadu (11.2%), which is within sampling error of it.
 
 ## Inference, not finding
 The high-entry states (Tamil Nadu, Karnataka, Telangana) are likely to be the ones drawing workers from elsewhere, and the low-entry states (West Bengal, Andhra Pradesh, Kerala) the ones sending them. This data does not show it: it shows only the two groups. Migration data or graduate tracking is needed to test it.
