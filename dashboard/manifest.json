@@ -1,0 +1,86 @@
+{
+  "title": "West Bengal Graduate Gap",
+  "artifact_type": "Dashboard",
+  "datasets": {
+    "gap": {
+      "title": "West Bengal gap by year",
+      "description": "Undergraduate pass-outs (AISHE Table 33) and EPFO net new payroll aged 18-25 for West Bengal, 2019-20 to 2023-24; built from the state-jobs-gap repository (data/wb_gap.csv).",
+      "file": "data/west-bengal-gap.csv",
+      "format": "csv",
+      "fixed": true,
+      "built_from": "data/wb_gap.csv"
+    },
+    "peers": {
+      "title": "Peer states ratio",
+      "description": "EPFO net new payroll aged 18-25 per undergraduate pass-out for West Bengal, Tamil Nadu, Telangana, Karnataka and Maharashtra (data/peer_ratio.csv).",
+      "file": "data/peer-states-ratio.csv",
+      "format": "csv",
+      "fixed": true,
+      "built_from": "data/peer_ratio.csv"
+    },
+    "education": {
+      "title": "Unemployment by education",
+      "description": "PLFS 2025 annual report Tables 22-24: LFPR, WPR and UR by highest education level, West Bengal and all India, usual status, age 15+, persons.",
+      "file": "data/education-wb-vs-india.csv",
+      "format": "csv",
+      "fixed": true,
+      "built_from": "data/plfs2025_education_by_state.csv (derived)"
+    },
+    "districts": {
+      "title": "West Bengal districts",
+      "description": "PLFS 2025 district snapshot: state and ten most populous districts; LFPR, WPR, UR for age 15+ and NEET for 15-29.",
+      "file": "data/west-bengal-districts.csv",
+      "format": "csv",
+      "fixed": true,
+      "built_from": "data/plfs2025_district_snapshot.csv (derived)"
+    },
+    "kolkata": {
+      "title": "Kolkata and Howrah benchmarks",
+      "description": "PLFS 2025 Million-plus Cities report: Kolkata and Howrah city corporations against all million-plus cities and urban India. Copied by hand from the report tables.",
+      "file": "data/kolkata-benchmarks.csv",
+      "format": "csv",
+      "fixed": true,
+      "built_from": "data/plfs2025_kolkata_howrah_vs_benchmarks.csv"
+    },
+    "sens": {
+      "title": "Sensitivity of the ratio",
+      "description": "Scenarios that change the assumptions behind the headline ratio of EPFO net payroll to undergraduate pass-outs, West Bengal 2019-20 to 2023-24 (data/pressure_test_sensitivity.csv).",
+      "file": "data/pressure-test-sensitivity.csv",
+      "format": "csv",
+      "fixed": true,
+      "built_from": "data/pressure_test_sensitivity.csv"
+    },
+    "youth": {
+      "title": "Peers per young person",
+      "description": "Undergraduate pass-outs and EPFO net payroll aged 18-25 per 100 people aged 18-23 (AISHE Table 38) for West Bengal and four peer states (data/pressure_test_peers_per_youth.csv).",
+      "file": "data/peers-per-youth.csv",
+      "format": "csv",
+      "fixed": true,
+      "built_from": "data/pressure_test_peers_per_youth.csv"
+    },
+    "adjacent": {
+      "title": "Neighbouring states",
+      "description": "West Bengal and the states bordering it (Odisha, Jharkhand, Bihar, Assam, Sikkim): formal entry per pass-out under four scenarios, per 100 young people, graduate unemployment and participation, NEET (data/adjacent_states_summary.csv). Sikkim has no EPFO state figures.",
+      "file": "data/adjacent-states.csv",
+      "format": "csv",
+      "fixed": true,
+      "built_from": "data/adjacent_states_summary.csv"
+    },
+    "south": {
+      "title": "Large states",
+      "description": "West Bengal with Tamil Nadu, Andhra Pradesh, Telangana, Kerala, Karnataka and Maharashtra: formal entry per pass-out under four scenarios, per 100 young people, graduate unemployment and participation, NEET (data/large_states_summary.csv).",
+      "file": "data/large-states.csv",
+      "format": "csv",
+      "fixed": true,
+      "built_from": "data/large_states_summary.csv"
+    },
+    "robust": {
+      "title": "Robustness check",
+      "description": "Eleven states with EPFO formal entrants per 100 young people and PLFS 2025 residence-based measures: regular wage or salaried share, limited-company share of non-farm workers, regular jobs without social security, and a rough formal-job density (data/robustness_plfs.csv).",
+      "file": "data/robustness-plfs.csv",
+      "format": "csv",
+      "fixed": true,
+      "built_from": "data/robustness_plfs.csv"
+    }
+  }
+}

@@ -1,0 +1,8 @@
+indicator,basis,age_group,persons_Kolkata_MC,persons_Howrah_MC,persons_all_million_plus,persons_urban_India,source_table
+LFPR %,usual status ps+ss,15+,55.4,51.4,52.4,52.2,Million-plus cities Table 2
+WPR %,usual status ps+ss,15+,54.3,50.9,49.8,49.7,Million-plus cities Table 3
+UR %,usual status ps+ss,15+,1.9*,0.8*,4.9,4.8,Million-plus cities Table 11 (* = RSE 40%+ in source)
+NEET %,usual status ps+ss,15-24,17.4,3.8,16.4,18.9,Million-plus cities Table 12
+NEET %,usual status ps+ss,15-29,21.9,26.0,22.2,25.0,Million-plus cities Table 12
+Avg regular wage/salary Rs per month,CWS,workers,19093,23078,28808,26258,Million-plus cities Table 8
+Avg self-employment earnings Rs per 30 days,CWS,workers,17989,23669,30858,23013,Million-plus cities Table 7
