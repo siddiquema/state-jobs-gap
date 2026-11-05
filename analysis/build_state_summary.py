@@ -15,6 +15,7 @@ ROOT = Path(__file__).resolve().parent.parent
 YEARS = ["2019-20", "2020-21", "2021-22", "2022-23", "2023-24"]
 NEXT = ["2020-21", "2021-22", "2022-23", "2023-24", "2024-25"]
 out_name = sys.argv[1]
+SNAPSHOT_NAME = {"Kerala": "Keralam"}   # the 2025 district snapshot uses the state's new name
 spec = [a.split(":") for a in sys.argv[2:]]            # [aishe, epfo, pop alias]
 
 ug = {}
@@ -58,7 +59,7 @@ for s, es, _ in spec:
                  "epfo_per_100_youth_2023_24": round(epf("2023-24", es, ["18-21", "22-25"]) / pop[s] * 100, 1),
                  "female_share_2023_24": round(ug[("2023-24", s)][1] / ug[("2023-24", s)][2], 3),
                  "grad_lfpr_male": lm * 100, "grad_lfpr_female": lf * 100, "grad_ur": plfs[("UR", "persons", s, "graduate")],
-                 "all_ur": plfs[("UR", "persons", s, "all")], "neet_15_29": neet[s]})
+                 "all_ur": plfs[("UR", "persons", s, "all")], "neet_15_29": neet[SNAPSHOT_NAME.get(s, s)]})
 with open(ROOT / "data" / out_name, "w", newline="") as fh:
     w = csv.DictWriter(fh, fieldnames=cols); w.writeheader(); w.writerows(rows)
 for r in rows: print(r)
