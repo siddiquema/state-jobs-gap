@@ -11,8 +11,9 @@ def svg(w, h, body):
     return f'<svg viewBox="0 0 {w} {h}" width="100%" xmlns="http://www.w3.org/2000/svg" style="{FONT}">{body}</svg>'
 
 
-def text(x, y, s, size=11, fill=NAVY, anchor="start", weight="normal"):
-    return f'<text x="{x:.1f}" y="{y:.1f}" font-size="{size}" fill="{fill}" text-anchor="{anchor}" font-weight="{weight}">{esc(s)}</text>'
+def text(x, y, s, size=11, fill=NAVY, anchor="start", weight="normal", halo=False):
+    h = ' stroke="#fff" stroke-width="3.5" paint-order="stroke"' if halo else ""
+    return f'<text x="{x:.1f}" y="{y:.1f}" font-size="{size}" fill="{fill}" text-anchor="{anchor}" font-weight="{weight}"{h}>{esc(s)}</text>'
 
 
 def legend(items, x, y, size=11):
@@ -64,7 +65,7 @@ def hbars(rows, width=640, row_h=24, label_w=120, fmt=lambda v: f"{v:.1f}", vmax
         y = top + i * row_h
         out.append(text(label_w - 8, y + row_h * 0.62, lab, 11.5, NAVY, "end", "bold" if bold else "normal"))
         out.append(f'<rect x="{x0}" y="{y+3}" width="{max(0,(v/vmax)*(x1-x0)):.1f}" height="{row_h-8}" fill="{color}"/>')
-        out.append(text(x0 + (v / vmax) * (x1 - x0) + 5, y + row_h * 0.62, fmt(v), 11, NAVY, "start", "bold" if bold else "normal"))
+        out.append(text(x0 + (v / vmax) * (x1 - x0) + 5, y + row_h * 0.62, fmt(v), 11, NAVY, "start", "bold" if bold else "normal", halo=True))
     if ref:
         rx = x0 + ref[0] / vmax * (x1 - x0)
         out.append(f'<line x1="{rx:.1f}" x2="{rx:.1f}" y1="{top-4}" y2="{height-6}" stroke="{MID}" stroke-dasharray="3 3"/>')
