@@ -157,6 +157,52 @@ import math
 for nn, want in ((15000, 0.98), (1250, 3.4)):
     check("design", f"margin of error for {nn} respondents (95%, design effect 1.5), points", round(1.96 * math.sqrt(1.5 * 0.25 / nn) * 100, 2 if nn == 15000 else 1), want)
 
+# ---------- 3b. Average regular wage by state (Table 38) and by occupation (Table 51): two text routes that must agree
+def t38_rows(text_pages, mode):
+    if mode == "raw":
+        hits = [p for p in text_pages if re.search(r"Table \(38\):", p) and re.search(r"^West Bengal ", p, re.M)]
+        page = hits[-1]
+        lines = page.splitlines()
+    else:
+        hits = [p for p in text_pages if re.search(r"Table \(38\):", p) and re.search(r"^West Bengal ", p, re.M)]
+        lines = [re.sub(r"\s{2,}", " ", l) for l in hits[-1].splitlines()]
+    out = {}
+    for l in lines:
+        m = re.match(r"^([A-Za-z&.\- ]+?) ((?:[\d,]+ ){8}[\d,]+)$", l.strip())
+        if m:
+            out[m.group(1).strip()] = [int(x.replace(",", "")) for x in m.group(2).split()]
+    return out
+lay_pages = pdf_text(next((ROOT / "raw/plfs").glob("*PLFS_2025_F_REV*.pdf")), "-layout").split("\f")
+w_raw, w_lay = t38_rows(ann, "raw"), t38_rows(lay_pages, "layout")
+check("wages", "Table 38 rows read by the two text routes agree (number of states and UTs)", (len(w_raw), w_raw == w_lay), (36, True))
+check("wages", "West Bengal average regular wage or salary, persons, rural+urban (Rs a month)", w_raw["West Bengal"][8], 16618)
+check("wages", "India average regular wage or salary, persons, rural+urban", w_raw["all India"][8], 22699)
+states_w = {k: v[8] for k, v in w_raw.items() if k != "all India"}
+rank_w = sorted(states_w, key=states_w.get)
+check("wages", "West Bengal is the second lowest of 35 states and UTs", (rank_w.index("West Bengal") + 1, len(rank_w)), (2, 35))
+check("wages", "only Punjab is lower than West Bengal", rank_w[0], "Punjab")
+check("wages", "West Bengal is 27% below India", round((1 - w_raw["West Bengal"][8] / w_raw["all India"][8]) * 100), 27)
+check("wages", "West Bengal urban average regular wage (persons) and India's", (w_raw["West Bengal"][5], w_raw["all India"][5]), (19019, 26247))
+occ_pages = [p for p in ann if re.search(r"Table \(51\):", p)]
+occ_lines = [l for l in occ_pages[-1].splitlines() if l.startswith("Average wage/salary earnings")]
+occ_all = [[int(x.replace(",", "")) for x in re.findall(r"[\d,]{3,}", l)] for l in occ_lines]
+occ_p = occ_all[2]
+check("wages", "Table 51 (India, by occupation) all-occupation average equals Table 38's India figure", occ_p[9], w_raw["all India"][8])
+check("wages", "Table 51 persons: managers, professionals, elementary occupations", (occ_p[0], occ_p[1], occ_p[8]), (50408, 38466, 12270))
+
+# printed page labels for the source map
+def page_label(tno, last=True):
+    hits = [p for p in ann if re.search(rf"Table \({tno}\):", p) and re.search(r"^West Bengal ", p, re.M)]
+    m = re.search(r"A-\d+", hits[-1] if last else hits[0])
+    return m.group(0) if m else ""
+labels = {t: page_label(t) for t in (19, 22, 23, 24, 35, 36, 38)}
+_h22 = [p for p in ann if re.search(r"Table \(22\):", p) and re.search(r"^West Bengal ", p, re.M)]
+labels["22f"] = re.search(r"A-\d+", _h22[-2]).group(0)
+_sep_pages = pdf_text(next((ROOT / "raw/epfo").glob("*September-2025*.pdf")), "-layout").split("\f")
+_state_pp = [i + 1 for i, p in enumerate(_sep_pages) if "Age Bucket:" in p and "State" in p and "WEST BENGAL" in p]
+labels["epfo_state_pages"] = f"{min(_state_pp)} to {max(_state_pp)}"
+labels["51"] = (re.search(r"A-\d+", occ_pages[-1]) or [""])[0] if re.search(r"A-\d+", occ_pages[-1]) else ""
+
 # ---------- 4. City report and district snapshot
 city = pdf_text(next((ROOT / "raw/plfs").glob("*Million_plus_city_F.pdf")), "-layout").splitlines()
 def city_rows(prefix):
@@ -283,7 +329,7 @@ check("claim", "matching the lowest large state needs 1.8 to 2.4 times on the su
 
 # AISHE 2023-24 fall and response rates (raw workbooks)
 check("claim", "West Bengal UG pass-outs fell 18% from 2022-23 to 2023-24", round((raw_ug["2023-24"][2] / raw_ug["2022-23"][2] - 1) * 100), -18)
-resp = {}
+resp, univ = {}, {}
 for y in ("2022-23", "2023-24"):
     wbk = openpyxl.load_workbook(ROOT / "raw/aishe" / FILES[y], read_only=True, data_only=True)
     sh = next(n for n in wbk.sheetnames if "insresponse" in n.lower().replace(" ", ""))
@@ -291,15 +337,17 @@ for y in ("2022-23", "2023-24"):
         if any(isinstance(c, str) and c.strip() == "West Bengal" for c in r):
             nums = [c for c in r if isinstance(c, (int, float))]
             resp[y] = (nums[-3], nums[-2])
+            univ[y] = (nums[1], nums[2])
 check("claim", "West Bengal institutions responding 2022-23 (registered, responded)", resp["2022-23"], (2249, 2243))
 check("claim", "West Bengal institutions responding 2023-24 (registered, responded)", resp["2023-24"], (2435, 2331))
+check("claim", "AISHE counts 59 universities in West Bengal in 2023-24 (registered, responded)", univ["2023-24"], (59, 59))
 check("claim", "response rate fell by less than 5 points while pass-outs fell 18%", round(resp["2022-23"][1] / resp["2022-23"][0] * 100 - resp["2023-24"][1] / resp["2023-24"][0] * 100) < 5, True)
 for st in ("Tamil Nadu", "Telangana", "Karnataka", "Maharashtra", "West Bengal"):
     check("claim", f"{st}: undergraduate pass-outs per 100 young people, 2023-24", round(F["ug"][("2023-24", st)][2] / raw_pop[("2023-24", st)] * 100, 1), float(S[st]["ug_per_100_youth_2023_24"]))
 ratio_ug = [float(S["West Bengal"]["ug_per_100_youth_2023_24"]) / float(S[h]["ug_per_100_youth_2023_24"]) for h in HUB]
 check("claim", "West Bengal's graduate output per young person is 38% to 64% of the four large states'", (round(min(ratio_ug) * 100), round(max(ratio_ug) * 100)), (38, 64))
 import json
-json.dump({"wages": wages, "india": RAW_INDIA, "kolkata_ur_rse": float(rse_k[8]), "months_national_total": nat},
+json.dump({"avg_wage": {k: v for k, v in w_raw.items()}, "occ_wage": occ_p, "page_labels": labels, "wages": wages, "india": RAW_INDIA, "kolkata_ur_rse": float(rse_k[8]), "months_national_total": nat},
           open(Path(__file__).resolve().parent / "validated_values.json", "w"), indent=1)
 
 # ---------- write the log

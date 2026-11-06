@@ -171,6 +171,15 @@ bridge,"remainder after adjustments, no PG deduction, ages 22-25 (thousands)",53
 bridge,the four remainders range from about -0.05 to +0.54 million,"(-0.05, 0.54)","(-0.05, 0.54)",PASS
 design,"margin of error for 15000 respondents (95%, design effect 1.5), points",0.98,0.98,PASS
 design,"margin of error for 1250 respondents (95%, design effect 1.5), points",3.4,3.4,PASS
+wages,Table 38 rows read by the two text routes agree (number of states and UTs),"(36, True)","(36, True)",PASS
+wages,"West Bengal average regular wage or salary, persons, rural+urban (Rs a month)",16618,16618,PASS
+wages,"India average regular wage or salary, persons, rural+urban",22699,22699,PASS
+wages,West Bengal is the second lowest of 35 states and UTs,"(2, 35)","(2, 35)",PASS
+wages,only Punjab is lower than West Bengal,Punjab,Punjab,PASS
+wages,West Bengal is 27% below India,27,27,PASS
+wages,West Bengal urban average regular wage (persons) and India's,"(19019, 26247)","(19019, 26247)",PASS
+wages,"Table 51 (India, by occupation) all-occupation average equals Table 38's India figure",22699,22699,PASS
+wages,"Table 51 persons: managers, professionals, elementary occupations","(50408, 38466, 12270)","(50408, 38466, 12270)",PASS
 PLFS cities,number of million-plus cities with a regular wage estimate,46,46,PASS
 PLFS cities,Kolkata average regular wage (Rs a month),19093,19093,PASS
 PLFS cities,Kolkata rank among cities from the lowest wage (5 = fifth lowest),5,5,PASS
@@ -256,6 +265,7 @@ claim,matching the lowest large state needs 1.8 to 2.4 times on the survey measu
 claim,West Bengal UG pass-outs fell 18% from 2022-23 to 2023-24,-18,-18,PASS
 claim,"West Bengal institutions responding 2022-23 (registered, responded)","(2249, 2243)","(2249, 2243)",PASS
 claim,"West Bengal institutions responding 2023-24 (registered, responded)","(2435, 2331)","(2435, 2331)",PASS
+claim,"AISHE counts 59 universities in West Bengal in 2023-24 (registered, responded)","(59, 59)","(59, 59)",PASS
 claim,response rate fell by less than 5 points while pass-outs fell 18%,True,True,PASS
 claim,"Tamil Nadu: undergraduate pass-outs per 100 young people, 2023-24",9.1,9.1,PASS
 claim,"Telangana: undergraduate pass-outs per 100 young people, 2023-24",6.5,6.5,PASS
