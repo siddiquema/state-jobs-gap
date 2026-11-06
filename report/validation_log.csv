@@ -180,6 +180,21 @@ wages,West Bengal is 27% below India,27,27,PASS
 wages,West Bengal urban average regular wage (persons) and India's,"(19019, 26247)","(19019, 26247)",PASS
 wages,"Table 51 (India, by occupation) all-occupation average equals Table 38's India figure",22699,22699,PASS
 wages,"Table 51 persons: managers, professionals, elementary occupations","(50408, 38466, 12270)","(50408, 38466, 12270)",PASS
+payroll,national net payroll 2022-23 = new subscribers - exits + rejoiners,13851689,13851689,PASS
+payroll,national net payroll 2023-24 = new subscribers - exits + rejoiners,13148204,13148204,PASS
+payroll,national net payroll 2024-25 = new subscribers - exits + rejoiners,12978168,12978168,PASS
+payroll,"national flows 2024-25 (new subscribers, exits, rejoiners, net)","(11391301, 18344519, 19931386, 12978168)","(11391301, 18344519, 19931386, 12978168)",PASS
+payroll,national net payroll 2024-25 agrees between the age-band table and the flows table,12978168,12978168,PASS
+payroll,"West Bengal share of India's net new payroll, 2024-25, all ages (per cent, one decimal)",3.5,3.5,PASS
+payroll,"West Bengal share of India's net new payroll aged 18-25, 2024-25 (per cent, one decimal)",3.3,3.3,PASS
+payroll,"population aged 18-23 across the 36 states and union territories, 2023-24","(36, 149880817)","(36, 149880817)",PASS
+payroll,"West Bengal share of India's population aged 18-23 (per cent, one decimal)",6.7,6.7,PASS
+payroll,"India net new payroll aged 18-25 per 100 people aged 18-23, 2024-25 (one decimal)",4.3,4.3,PASS
+payroll,"West Bengal net new payroll aged 18-25 per 100 people aged 18-23, 2024-25 (one decimal)",2.1,2.1,PASS
+payroll,NEET table read by two text routes agrees,True,True,PASS
+payroll,"NEET ages 15-29, West Bengal: men, women, persons","(8.6, 49.0, 29.9)","(8.6, 49.0, 29.9)",PASS
+payroll,"NEET ages 15-29, India: men, women, persons","(8.0, 42.2, 25.0)","(8.0, 42.2, 25.0)",PASS
+payroll,persons NEET agrees with the district snapshot's West Bengal figure,29.9,29.9,PASS
 PLFS cities,number of million-plus cities with a regular wage estimate,46,46,PASS
 PLFS cities,Kolkata average regular wage (Rs a month),19093,19093,PASS
 PLFS cities,Kolkata rank among cities from the lowest wage (5 = fifth lowest),5,5,PASS

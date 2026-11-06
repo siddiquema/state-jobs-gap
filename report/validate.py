@@ -203,6 +203,50 @@ _state_pp = [i + 1 for i, p in enumerate(_sep_pages) if "Age Bucket:" in p and "
 labels["epfo_state_pages"] = f"{min(_state_pp)} to {max(_state_pp)}"
 labels["51"] = (re.search(r"A-\d+", occ_pages[-1]) or [""])[0] if re.search(r"A-\d+", occ_pages[-1]) else ""
 
+# ---------- 3c. What the payroll figure is made of (national flows), West Bengal's share, and NEET by sex
+FYS8 = ["2017-18", "2018-19", "2019-20", "2020-21", "2021-22", "2022-23", "2023-24", "2024-25"]
+tots = re.findall(r"^\s*Total\s+(\d+)\s+(\d+)\s+(\d+)\s+(\d+)\s*$", t, re.M)[:8]
+flows = {fy: tuple(map(int, x)) for fy, x in zip(FYS8, tots)}
+for fy_ in ("2022-23", "2023-24", "2024-25"):
+    a1, b1, c1, d1 = flows[fy_]
+    check("payroll", f"national net payroll {fy_} = new subscribers - exits + rejoiners", a1 - b1 + c1, d1)
+check("payroll", "national flows 2024-25 (new subscribers, exits, rejoiners, net)", flows["2024-25"], (11391301, 18344519, 19931386, 12978168))
+row1 = re.search(r"2024-25\s+(\d+)\s+(\d+)\s+(\d+)\s+(\d+)\s+(\d+)\s+(\d+)\s+(\d+)\s+(\d+)", t).groups()
+check("payroll", "national net payroll 2024-25 agrees between the age-band table and the flows table", int(row1[6]), flows["2024-25"][3])
+india_1825 = int(row1[1]) + int(row1[2])
+wb_all = sum(sep[("2024-25", b)] for b in BK); wb_1825 = sep[("2024-25", "18-21")] + sep[("2024-25", "22-25")]
+check("payroll", "West Bengal share of India's net new payroll, 2024-25, all ages (per cent, one decimal)", round(wb_all / int(row1[6]) * 100, 1), 3.5)
+check("payroll", "West Bengal share of India's net new payroll aged 18-25, 2024-25 (per cent, one decimal)", round(wb_1825 / india_1825 * 100, 1), 3.3)
+wbk = openpyxl.load_workbook(ROOT / "raw/aishe" / FILES["2023-24"], read_only=True, data_only=True)
+shp = next(nm for nm in wbk.sheetnames if nm.replace(" ", "").startswith("38"))
+pop_states = {}
+for r in wbk[shp].iter_rows(values_only=True):
+    c = [x for x in r if x is not None]
+    if len(c) >= 5 and isinstance(c[0], (int, float)) and isinstance(c[1], str):
+        pop_states[c[1].strip()] = c[4]
+pop_all = sum(pop_states.values())
+check("payroll", "population aged 18-23 across the 36 states and union territories, 2023-24", (len(pop_states), pop_all), (36, 149880817))
+check("payroll", "West Bengal share of India's population aged 18-23 (per cent, one decimal)", round(pop_states["West Bengal"] / pop_all * 100, 1), 6.7)
+check("payroll", "India net new payroll aged 18-25 per 100 people aged 18-23, 2024-25 (one decimal)", round(india_1825 / pop_all * 100, 1), 4.3)
+check("payroll", "West Bengal net new payroll aged 18-25 per 100 people aged 18-23, 2024-25 (one decimal)", round(wb_1825 / pop_states["West Bengal"] * 100, 1), 2.1)
+def neet_rows(pages_list):
+    hits = [p for p in pages_list if re.search(r"Table \(57\.1\):", p) and re.search(r"^West Bengal ", p, re.M)]
+    assert len(hits) == 9
+    out = []
+    for p in hits[-3:]:
+        d = {}
+        for l in p.splitlines():
+            m = re.match(r"^\s*(West Bengal|all India)\s+((?:[\d.]+\s+){3}[\d.]+)\s*$", re.sub(r"\s{2,}", " ", l))
+            if m: d[m.group(1)] = [float(x) for x in m.group(2).split()]
+        out.append(d)
+    return out
+n_raw, n_lay = neet_rows(ann), neet_rows(lay_pages)
+check("payroll", "NEET table read by two text routes agrees", n_raw == n_lay, True)
+neet = {k: {"male": n_raw[0][k][1], "female": n_raw[1][k][1], "persons": n_raw[2][k][1]} for k in ("West Bengal", "all India")}
+check("payroll", "NEET ages 15-29, West Bengal: men, women, persons", (neet["West Bengal"]["male"], neet["West Bengal"]["female"], neet["West Bengal"]["persons"]), (8.6, 49.0, 29.9))
+check("payroll", "NEET ages 15-29, India: men, women, persons", (neet["all India"]["male"], neet["all India"]["female"], neet["all India"]["persons"]), (8.0, 42.2, 25.0))
+check("payroll", "persons NEET agrees with the district snapshot's West Bengal figure", neet["West Bengal"]["persons"], float([r for r in F["districts"] if r["level"] == "state"][0]["neet_15_29"]))
+
 # ---------- 4. City report and district snapshot
 city = pdf_text(next((ROOT / "raw/plfs").glob("*Million_plus_city_F.pdf")), "-layout").splitlines()
 def city_rows(prefix):
@@ -347,7 +391,7 @@ for st in ("Tamil Nadu", "Telangana", "Karnataka", "Maharashtra", "West Bengal")
 ratio_ug = [float(S["West Bengal"]["ug_per_100_youth_2023_24"]) / float(S[h]["ug_per_100_youth_2023_24"]) for h in HUB]
 check("claim", "West Bengal's graduate output per young person is 38% to 64% of the four large states'", (round(min(ratio_ug) * 100), round(max(ratio_ug) * 100)), (38, 64))
 import json
-json.dump({"avg_wage": {k: v for k, v in w_raw.items()}, "occ_wage": occ_p, "page_labels": labels, "wages": wages, "india": RAW_INDIA, "kolkata_ur_rse": float(rse_k[8]), "months_national_total": nat},
+json.dump({"flows": flows, "wb_share": {"all": wb_all / int(row1[6]), "y1825": wb_1825 / india_1825, "pop": pop_states["West Bengal"] / pop_all, "india_per100": india_1825 / pop_all * 100, "wb_all": wb_all, "wb_1825": wb_1825, "india_all": int(row1[6]), "india_1825": india_1825, "pop_all": pop_all}, "neet": neet, "avg_wage": {k: v for k, v in w_raw.items()}, "occ_wage": occ_p, "page_labels": labels, "wages": wages, "india": RAW_INDIA, "kolkata_ur_rse": float(rse_k[8]), "months_national_total": nat},
           open(Path(__file__).resolve().parent / "validated_values.json", "w"), indent=1)
 
 # ---------- write the log
