@@ -36,7 +36,7 @@
     },
     "kolkata": {
       "title": "Kolkata and Howrah benchmarks",
-      "description": "PLFS 2025 Million-plus Cities report: Kolkata and Howrah city corporations against all million-plus cities and urban India. Copied by hand from the report tables.",
+      "description": "PLFS 2025 Million-plus Cities report: Kolkata and Howrah city corporations against all million-plus cities and urban India. Kolkata persons unemployment is not flagged as high-error (corrected); Howrah persons unemployment is.",
       "file": "data/kolkata-benchmarks.csv",
       "format": "csv",
       "fixed": true,
@@ -81,6 +81,22 @@
       "format": "csv",
       "fixed": true,
       "built_from": "data/robustness_plfs.csv"
+    },
+    "bridgesteps": {
+      "title": "Gap bridge steps",
+      "description": "West Bengal, five years: undergraduate pass-outs, less continuing to a master's (proxy), less not in the labour force, less unemployed, giving employed graduates, beside formal entrants aged 18 to 25 and 22 to 25. Millions of people.",
+      "file": "data/gap-bridge-steps.csv",
+      "format": "csv",
+      "fixed": true,
+      "built_from": "report/facts.py (bridge), via scripts/build_dashboard_data.py"
+    },
+    "bridgecases": {
+      "title": "Gap bridge cases",
+      "description": "Four cases: employed graduates with and without the master's deduction against formal entrants aged 18 to 25 and 22 to 25, and the remainder, in millions of people.",
+      "file": "data/gap-bridge-cases.csv",
+      "format": "csv",
+      "fixed": true,
+      "built_from": "report/facts.py (bridge), via scripts/build_dashboard_data.py"
     }
   }
 }

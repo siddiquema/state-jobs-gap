@@ -1,0 +1,5 @@
+case,employed_graduates_million,formal_entrants_million,remainder_million
+"Master's deducted, ages 18 to 25",0.84,0.89,-0.05
+"Master's deducted, ages 22 to 25",0.84,0.5,0.35
+"No master's deduction, ages 18 to 25",1.03,0.89,0.14
+"No master's deduction, ages 22 to 25",1.03,0.5,0.54
