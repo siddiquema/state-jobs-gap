@@ -39,7 +39,7 @@
   <header>
     <p class="kicker">Public-data baseline · West Bengal</p>
     <h1>Graduates, formal jobs and the gap</h1>
-    <p class="take">From <b data-draw="yFrom" data-source="gaptotals" data-field="first_year">—</b> to <b data-draw="yTo" data-source="gaptotals" data-field="last_year">—</b>, West Bengal's institutions produced <b data-draw="ugTotal" data-source="gaptotals" data-field="ug_total">—</b> undergraduate pass-outs, while <b data-draw="epTotal" data-source="gaptotals" data-field="epfo_total">—</b> people aged 18–25 entered formal payroll in the state. Unemployment among graduates is <b data-draw="gradUr" data-source="gradur" data-field="ur_grad_wb">—</b>, against <b data-draw="allUr" data-source="gradur" data-field="ur_all_wb">—</b> for all adults.</p>
+    <p class="take">From <b data-draw="yFrom" data-source="gaptotals" data-field="first_year">—</b> to <b data-draw="yTo" data-source="gaptotals" data-field="last_year">—</b>, West Bengal's institutions produced <b data-draw="ugTotal" data-source="gaptotals" data-field="ug_total">—</b> undergraduate pass-outs, while <b data-draw="epTotal" data-source="gaptotals" data-field="epfo_total">—</b> people aged 18–25 entered formal payroll in the state. Unemployment among graduates is <b data-draw="gradUr" data-source="gradur" data-field="ur_grad_wb">—</b>, against <b data-draw="allUr" data-source="gradur" data-field="ur_all_wb">—</b> for all adults. The two counts differ in place, age and kind. After allowing for further study and non-participation, the remainder is between <b data-draw="resLo" data-source="bridgecalc" data-field="res_min">—</b> and <b data-draw="resHi" data-source="bridgecalc" data-field="res_max">—</b> million, so the gap is not a count of unplaced graduates.</p>
   </header>
 
   <section>
@@ -55,7 +55,7 @@
       </div>
       <div>
         <p class="q">How many migrations will be stopped?</p>
-        <p>No target has been found, but budget speeches and state policies have not been searched yet. The data below shows the size of the gap, which a target would have to close. It does not count people who left.</p>
+        <p>No target has been found, but budget speeches and state policies have not been searched yet. The data below shows how far graduate output and formal entry differ, and why that difference cannot be read as people who left.</p>
       </div>
     </div>
   </section>
@@ -93,6 +93,27 @@
       </div>
       <div class="chart short" data-draw="chartPeers" data-source="peers"></div>
     </div>
+  </section>
+
+  <section class="card">
+    <div>
+      <h2>Reading the gap: what the raw difference contains</h2>
+      <p class="note">Pass-outs, less those who continue to a master's (proxied by postgraduate pass-outs), less graduates outside the labour force and the unemployed, give employed graduates. Formal entrants are set beside that figure. Millions of people over five years; illustrative.</p>
+    </div>
+    <div class="chart" data-draw="chartBridge" data-source="bridgesteps"></div>
+    <div class="tablebox">
+      <table data-source="bridgecases" data-row-key="case">
+        <thead><tr><th data-field="case">Case</th><th data-field="employed_graduates_million">Employed graduates</th><th data-field="formal_entrants_million">Formal entrants</th><th data-field="remainder_million">Remainder</th></tr></thead>
+        <tbody data-draw="bridgeBody"></tbody>
+      </table>
+    </div>
+    <ul>
+      <li><b>Place.</b> Pass-outs are counted by the institution's state; EPFO assigns workers to states by a method it does not state. Students, graduates and workers cross state lines.</li>
+      <li><b>Age.</b> Pass-outs are graduates of any age; payroll entrants are aged 18 to 25 and include people who are not graduates; population is aged 18 to 23.</li>
+      <li><b>Kind.</b> Payroll is a flow of new entrants. The household survey used to check it counts a stock of people in work.</li>
+      <li><b>Period.</b> Academic years run July to June, financial years April to March, and graduates mostly join the year after.</li>
+    </ul>
+    <p class="note">The remainder could be informal or government work, formal entrants who are not graduates, people who moved in from other states, or graduates working in other states. This data cannot separate them.</p>
   </section>
 
   <section class="grid">
@@ -144,7 +165,7 @@
     </div>
     <ul>
       <li><b>Holds.</b> West Bengal registers fewer young formal entrants than its graduate output on every reading, from <b data-draw="rMin" data-source="sensrange" data-field="ratio_min">—</b> to <b data-draw="rMax" data-source="sensrange" data-field="ratio_max">—</b> entrants per pass-out.</li>
-      <li><b>Weaker than first stated.</b> The shortfall of about a million is the top of the range. Allowing for graduates who are not in the labour force at all, many of them women, who are the majority of pass-outs, the unexplained difference is closer to <b data-draw="lfGap" data-source="sensrange" data-field="lf_gap">—</b>.</li>
+      <li><b>Weaker than first stated.</b> The raw difference is the top of a range. After further study and non-participation the remainder is <b data-draw="resLo2" data-source="bridgecalc" data-field="res_min">—</b> to <b data-draw="resHi2" data-source="bridgecalc" data-field="res_max">—</b> million (see the section above), so it is not read as unplaced graduates.</li>
       <li><b>Does not hold.</b> Reading the difference as people who left. Nothing here separates leaving from further study, informal or government work, or not working.</li>
       <li><b>National, not local.</b> Graduate unemployment in West Bengal is the same as India's. The report publishes no sampling error for this table; a rough estimate from the sample size puts it within a couple of points either side, so small gaps with India, the postgraduate one included, are not reliable.</li>
       <li><b>Tested, not confirmed.</b> EPFO does not say how it assigns workers to states. A measure counted where people live and work gives the same order of states (see the robustness check below), but it cannot rule out some inflation where large employers register.</li>
@@ -213,7 +234,7 @@
       <h2>Robustness check: does the pattern survive a different source?</h2>
       <p class="note">EPFO does not say how it assigns workers to states, so the order of states was compared with survey measures counted where people live and work (PLFS 2025). Eleven states have both. Sikkim has no EPFO figures.</p>
     </div>
-    <p>The order reproduces. The rank correlation between EPFO formal entry per young person and the share of non-farm workers in limited companies is <b data-draw="rhoC" data-source="robustcalc" data-field="rho_company">—</b>; with a rough formal-job density it is <b data-draw="rhoD" data-source="robustcalc" data-field="rho_density">—</b>, and with the regular wage or salaried share <b data-draw="rhoR" data-source="robustcalc" data-field="rho_regular">—</b>. The gap is smaller on this source: West Bengal's formal-job density is <b data-draw="rWbD" data-source="robustcalc" data-field="wb_density">—</b> per 100 people aged 15 and over, against <b data-draw="rHubDLo" data-source="robustcalc" data-field="hub_density_min">—</b> to <b data-draw="rHubDHi" data-source="robustcalc" data-field="hub_density_max">—</b> in the four high-entry states, and its limited-company share is <b data-draw="rWbC" data-source="robustcalc" data-field="wb_company">—</b> against <b data-draw="rHubCLo" data-source="robustcalc" data-field="hub_company_min">—</b> to <b data-draw="rHubCHi" data-source="robustcalc" data-field="hub_company_max">—</b>. Kerala is the exception: <b data-draw="rKReg" data-source="robustcalc" data-field="kerala_regular">—</b> of its workers are in regular wage or salaried work, yet its EPFO entry is only <b data-draw="rKEpfo" data-source="robustcalc" data-field="kerala_epfo">—</b> per 100 young people, so EPFO may understate its formal employment.</p>
+    <p>The order reproduces, which supports the pattern but not EPFO's exact levels: EPFO counts a flow of new entrants and the survey a stock of people in work. The rank correlation between EPFO formal entry per young person and the share of non-farm workers in limited companies is <b data-draw="rhoC" data-source="robustcalc" data-field="rho_company">—</b>; with a rough formal-job density it is <b data-draw="rhoD" data-source="robustcalc" data-field="rho_density">—</b>, and with the regular wage or salaried share <b data-draw="rhoR" data-source="robustcalc" data-field="rho_regular">—</b>. The gap is smaller on this source: West Bengal's formal-job density is <b data-draw="rWbD" data-source="robustcalc" data-field="wb_density">—</b> per 100 people aged 15 and over, against <b data-draw="rHubDLo" data-source="robustcalc" data-field="hub_density_min">—</b> to <b data-draw="rHubDHi" data-source="robustcalc" data-field="hub_density_max">—</b> in the four high-entry states, and its limited-company share is <b data-draw="rWbC" data-source="robustcalc" data-field="wb_company">—</b> against <b data-draw="rHubCLo" data-source="robustcalc" data-field="hub_company_min">—</b> to <b data-draw="rHubCHi" data-source="robustcalc" data-field="hub_company_max">—</b>. Kerala is the exception: <b data-draw="rKReg" data-source="robustcalc" data-field="kerala_regular">—</b> of its workers are in regular wage or salaried work, yet its EPFO entry is only <b data-draw="rKEpfo" data-source="robustcalc" data-field="kerala_epfo">—</b> per 100 young people, so EPFO may understate its formal employment.</p>
     <p class="note">Each dot is a state: the share of non-farm workers in limited companies, across, against EPFO formal entrants per 100 young people, up.</p>
     <div class="chart" data-draw="chartRobust" data-source="robust"></div>
     <div class="tablebox">
@@ -368,6 +389,16 @@
     }
   });
 
+  dash.calc('bridgecalc', {
+    inputs: ['bridgecases'],
+    title: 'Range of the remainder',
+    description: 'Lowest and highest remainder across the four cases, in millions of people.',
+    fn: (cases) => {
+      const r = cases.map((x) => Number(x.remainder_million));
+      return [{ res_min: Math.min(...r), res_max: Math.max(...r) }];
+    }
+  });
+
   const one = (id, field, fmt) => dash.draw(id, (el) => {
     const g = dash.data(el.dataset.source);
     const r = g.status === 'ok' && g.data[0];
@@ -387,6 +418,7 @@
   one('wbU', 'wb_grad_ur', (v) => v + '%'); one('uMin', 'nb_ur_min', (v) => v + '%'); one('uMax', 'nb_ur_max', (v) => v + '%');
   one('sWb', 'wb', f1); one('sKl', 'kerala', f1); one('sAp', 'ap', f1); one('sHubMin', 'hub_min', f1); one('sHubMax', 'hub_max', f1);
   one('sUrMin', 'ur_min', (v) => v + '%'); one('sUrMax', 'ur_max', (v) => v + '%'); one('sUrMinState', 'ur_min_state', text); one('sUrMaxState', 'ur_max_state', text);
+  one('resLo', 'res_min', (v) => (v < 0 ? '\u2212' : '+') + Math.abs(v).toFixed(2)); one('resHi', 'res_max', (v) => (v < 0 ? '\u2212' : '+') + Math.abs(v).toFixed(2)); one('resLo2', 'res_min', (v) => (v < 0 ? '\u2212' : '+') + Math.abs(v).toFixed(2)); one('resHi2', 'res_max', (v) => (v < 0 ? '\u2212' : '+') + Math.abs(v).toFixed(2));
   one('gradUr', 'ur_grad_wb', (v) => v + '%');
   const pct = (v) => v + '%';
   one('rhoC', 'rho_company', f2); one('rhoD', 'rho_density', f2); one('rhoR', 'rho_regular', f2);
@@ -563,6 +595,36 @@
     });
   });
 
+  dash.draw('chartBridge', (el) => {
+    el.replaceChildren();
+    const g = dash.data('bridgesteps');
+    if (g.status !== 'ok' || !g.data.length) return;
+    const rows = g.data.map((r) => ({ label: r.label, v: +r.value_million, kind: r.kind }));
+    const W = Math.max(300, el.clientWidth), H = 300, m = { t: 22, r: 6, b: 52, l: 6 };
+    const band = (W - m.l - m.r) / rows.length, bw = band * 0.62;
+    const vmax = d3.max(rows.filter((r) => r.kind !== 'down'), (r) => r.v);
+    const y = (v) => H - m.b - v / vmax * (H - m.t - m.b);
+    const svg = d3.select(el).append('svg').attr('viewBox', `0 0 ${W} ${H}`).attr('width', '100%');
+    const tip = tipper(el);
+    let level = 0, prevX = null;
+    rows.forEach((r, i) => {
+      const x = m.l + i * band + (band - bw) / 2;
+      if (prevX !== null && r.kind !== 'ref') svg.append('line').attr('x1', prevX).attr('x2', x).attr('y1', y(level)).attr('y2', y(level)).style('stroke', 'var(--cds-chart-grid)').attr('stroke-dasharray', '2 2');
+      let top, bot, fill;
+      if (r.kind === 'down') { top = y(level); bot = y(level - r.v); level -= r.v; fill = 'var(--cds-text-secondary)'; }
+      else { top = y(r.v); bot = y(0); if (r.kind === 'total') level = r.v; fill = r.kind === 'ref' ? dash.colors[0] : 'var(--cds-chart-muted)'; }
+      svg.append('rect').attr('x', x).attr('y', top).attr('width', bw).attr('height', bot - top).style('fill', fill)
+        .on('mousemove', (e) => tip.show(e, [r.label, (r.kind === 'down' ? '\u2212' : '') + r.v.toFixed(2) + ' million'])).on('mouseleave', tip.hide);
+      svg.append('text').attr('class', 'v').attr('x', x + bw / 2).attr('y', r.kind === 'down' ? bot + 13 : top - 5).attr('text-anchor', 'middle').text((r.kind === 'down' ? '\u2212' : '') + r.v.toFixed(2));
+      const per = Math.max(6, Math.floor(band / 5.6));
+      const lines = []; let cur = '';
+      r.label.split(' ').forEach((w) => { if ((cur + ' ' + w).trim().length > per && cur) { lines.push(cur); cur = w; } else { cur = (cur + ' ' + w).trim(); } });
+      if (cur) lines.push(cur);
+      lines.forEach((ln, j) => svg.append('text').attr('x', x + bw / 2).attr('y', H - m.b + 16 + j * 12).attr('text-anchor', 'middle').attr('font-size', 10).text(ln));
+      prevX = x + bw;
+    });
+  });
+
   const body = (id, source, cols, order) => dash.draw(id, (tb) => {
     tb.replaceChildren();
     const g = dash.data(source);
@@ -583,6 +645,7 @@
   body('adjBody', 'adjacent', { f: ['state', 'ratio_A_baseline', 'ratio_D_lf_adjusted', 'ug_per_100_youth_2023_24', 'epfo_per_100_youth_2023_24', 'grad_ur', 'grad_lfpr_female', 'neet_15_29'], key: (r) => encodeURIComponent(r.state), hl: (r) => r.state === 'West Bengal' });
   body('southBody', 'south', { f: ['state', 'ratio_A_baseline', 'ratio_D_lf_adjusted', 'ug_per_100_youth_2023_24', 'epfo_per_100_youth_2023_24', 'grad_ur', 'grad_lfpr_female', 'neet_15_29'], key: (r) => encodeURIComponent(r.state), hl: (r) => r.state === 'West Bengal' });
   body('robustBody', 'robust', { f: ['state', 'epfo_per_100_youth', 'regular_share_of_workers', 'company_share_nonagri', 'regular_no_ssb_share', 'formal_job_density_per_100'], key: (r) => encodeURIComponent(r.state), hl: (r) => r.state === 'West Bengal' });
+  body('bridgeBody', 'bridgecases', { f: ['case', 'employed_graduates_million', 'formal_entrants_million', 'remainder_million'], key: (r) => encodeURIComponent(r.case), hl: () => false, fmt: { remainder_million: (v) => (+v < 0 ? '\u2212' : '+') + Math.abs(+v).toFixed(2) } });
   body('kolBody', 'kolkata', { f: ['indicator', 'age_group', 'persons_Kolkata_MC', 'persons_Howrah_MC', 'persons_all_million_plus', 'persons_urban_India'], key: (r) => encodeURIComponent(r.indicator) + ',' + encodeURIComponent(r.age_group) });
 })();
 </script>
